@@ -1,0 +1,19 @@
+<mat-nav-list>
+
+    <!--/dashboard -> /dashboard/home-->
+    <a (click)="goToHome()" mat-list-item>Inicio</a>
+    
+    <!--/dashboard -> /dashboard/users-->
+    <a (click)="goToUsers()" mat-list-item>Usuarios</a>
+
+    <!--/dashboard -> /dashboard/products-->
+    <a (click)="goToPedidos()" mat-list-item >Pedidos</a>
+
+    <a (click)="goToInventarios()" mat-list-item >Inventarios</a>
+
+    <a (click)="goToProducts()" mat-list-item >Productos</a>
+
+    <!--/dashboard -> /auth-->
+    <a mat-list-item  (click)="LogOut()">Cerrar Sesión</a>
+
+  </mat-nav-list>

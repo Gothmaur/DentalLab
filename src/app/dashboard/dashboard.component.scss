@@ -1,0 +1,20 @@
+.example-container {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin: 0;
+  }
+  
+  .example-sidenav-content {
+    height: 100%;
+    
+    overflow: hidden; /* Evita el doble scrollbar */
+}
+  
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-sidenav {
+    padding: 20px;
+  }

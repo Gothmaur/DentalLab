@@ -1,0 +1,79 @@
+<h1 mat-dialog-title>{{
+    editingProduct
+    ? "Modificar Curso: " + editingProduct.nombre 
+    : "Crear Curso"    
+}}</h1>
+<div mat-dialog-content>
+    <form [formGroup] = "productsForm" class="grid">
+
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Nombre</mat-label>
+                <input formControlName ="nombre" matInput type="text" name = "nombre">
+                <mat-error *ngIf = "NombreControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "NombreControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Descripción</mat-label>
+                <input formControlName ="descripcion" matInput type = "text" name = "descripcion">
+                <mat-error *ngIf = "DescripcionControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "DescripcionControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Tipo</mat-label>
+                <input formControlName ="tipo" matInput type = "text" name = "tipo">
+                <mat-error *ngIf = "TipoControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+                <mat-error *ngIf = "TipoControl.hasError('required')"> 
+                    Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-12 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Profesor</mat-label>
+                <input formControlName ="profesor" matInput type = "text" name = "profesor">
+                <mat-error *ngIf = "ProfesorControl.hasError('required')"> Este campo es requerido</mat-error>
+                <mat-error *ngIf = "ProfesorControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Precio</mat-label>
+                <input formControlName ="precio" matInput type = "number" name = "precio">
+                <mat-error *ngIf = "PrecioControl.hasError('required')"> 
+                    Este campo es requerido, marque 0 si no tiene precio
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-12 flex justify-content-end">
+            <button mat-button mat-dialog-close> Cancelar </button>
+            <button mat-button type="submit" (click) = "onSubmint()"> Guardar </button>
+        </div> 
+
+    </form>
+    <!--Tabla de contenidos-->
+
+    <pre>
+        <!--{{ usersForm.value | json}} -->
+    </pre>
+</div>

@@ -1,0 +1,7 @@
+:host {
+    display: block;
+    margin-top: 60px; /* Ajusta según la altura de tu toolbar */
+    overflow-y: auto; /* Habilita el scrollbar vertical cuando es necesario */
+    padding: 20px;
+    height: calc(100vh - 60px); /* Ajusta según la altura de tu toolbar */
+  }

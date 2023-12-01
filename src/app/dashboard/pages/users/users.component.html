@@ -1,0 +1,22 @@
+<div class="user-management-container">
+    <h1 class="user-management-title">Administración de Usuarios</h1>
+    <p class="user-management-description" appResaltado>
+      Aquí podrás visualizar la información de los usuarios registrados en el sistema.
+    </p>
+  
+    <div class="user-table-container">
+      <app-users-table
+        [dataSource]="(users | async) || []"
+        (deleteUser)="onDeleteUser($event)"
+        (editUser)="onEditUser($event)"
+      ></app-users-table>
+    </div>
+  
+    <div class="add-user-button-container">
+      <button mat-flat-button color="primary" type="button" (click)="onCreateUser()">
+        <mat-icon>add</mat-icon>
+        Agregar Usuario
+      </button>
+    </div>
+  </div>
+  

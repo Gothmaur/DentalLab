@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="Nombre Completo">
+      <th mat-header-cell *matHeaderCellDef appResaltado> Nombre Completo </th>
+      <td mat-cell *matCellDef="let element" appResaltado> {{element | fullName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef appResaltado> E-mail </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef appResaltado> Acciones </th>
+      <td mat-cell *matCellDef="let element"> 
+        
+        <button mat-icon-button color="primary" [routerLink]="element.id">
+          <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="deleteUser.emit(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        
+        <button mat-icon-button color="primary" (click)="editUser.emit(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

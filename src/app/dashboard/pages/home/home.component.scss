@@ -1,0 +1,82 @@
+// styles.scss (o el nombre que prefieras)
+
+$primary-color: #3498db; // Cambia esto por tu color principal
+$secondary-color: #2ecc71; // Cambia esto por tu segundo color
+
+:host {
+    display: block;
+    margin-top: 60px; /* Ajusta según la altura de tu toolbar */
+    overflow-y: auto; /* Habilita el scrollbar vertical cuando es necesario */
+    padding: 20px;
+    height: calc(100vh - 60px); /* Ajusta según la altura de tu toolbar */
+  }
+  
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  
+
+  h1 {
+    color: $primary-color;
+  }
+
+  p {
+    color: #555;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+
+  .services,
+  .why-choose-us,
+  .testimonials,
+  .cta-buttons,
+  .latest-news,
+  .social-media {
+    margin-top: 30px;
+
+    h2 {
+      color: $primary-color;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+
+    p {
+      font-style: italic;
+    }
+
+    button {
+      background-color: $primary-color;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    a {
+      color: $primary-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

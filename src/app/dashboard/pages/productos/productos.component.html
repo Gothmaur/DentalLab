@@ -1,0 +1,20 @@
+<div class="product-management-container">
+    <h1 class="product-management-title">Administración de Productos</h1>
+    <p class="product-management-description" appResaltado>
+      Aquí podrás visualizar la información de los productos que brinda el laboratorio.
+    </p>
+  
+    <div class="product-table-container">
+      <app-product-table
+        [dataSource]="(products | async) || []"
+        (deleteProduct)="onDeleteProduct($event)"
+        (editProduct)="onEditProduct($event)"
+      ></app-product-table>
+    </div>
+  
+    <button mat-flat-button color="primary" type="button" (click)="onCreateProduct()">
+      <mat-icon>add</mat-icon>
+      Agregar Producto
+    </button>
+  </div>
+  
