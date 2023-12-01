@@ -46,15 +46,12 @@
         </div>
 
         <div class="col-12 field">
-            <mat-form-field appearance = "outline">
-                <mat-label>Profesor</mat-label>
-                <input formControlName ="profesor" matInput type = "text" name = "profesor">
-                <mat-error *ngIf = "ProfesorControl.hasError('required')"> Este campo es requerido</mat-error>
-                <mat-error *ngIf = "ProfesorControl.hasError('minlength')"> 
-                    Debe contar con al menos 2 caracteres
-                </mat-error>
-            </mat-form-field>
-        </div>
+            <label>
+              <input formControlName="cotizar" type="checkbox"  (change)="onCotizarChange()">
+              Precio por cotizar
+            </label>
+          </div>
+
         <div class="col-6 field">
             <mat-form-field appearance = "outline">
                 <mat-label>Precio</mat-label>

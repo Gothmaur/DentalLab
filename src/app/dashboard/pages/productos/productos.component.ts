@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
-import { NotifyService } from 'src/app/core/services/notify.service';
+//import { NotifyService } from 'src/app/core/services/notify.service';
 import { Products } from './Models/productos';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { ProductService } from './Services/product-service.service';
@@ -18,7 +18,8 @@ export class ProductosComponent {
   
   constructor(private matDialog: MatDialog, 
     private productServices:ProductService,
-    private notifyServices:NotifyService){
+    //private notifyServices:NotifyService
+    ){
       this.products = this.productServices.getProducts().pipe(
         //tap((valor) => console.log('Valor', valor)),
         map((valor) => valor.map((producto) => (
@@ -31,9 +32,10 @@ export class ProductosComponent {
         //tap((valor) => console.log('Valor nuevo', valor)),
       );
       this.productServices.loadProducts();
-      this.notifyServices.showSuccess("Se cargó correctamente");
+      //this.notifyServices.showSuccess("Se cargó correctamente");
     }
 
+    
 
 //Crear Producto 
   onCreateProduct():void{
@@ -50,8 +52,8 @@ export class ProductosComponent {
             nombre: v.nombre,
             descripcion: v.descripcion,
             tipo: v.tipo,
-            profesor: v.profesor,
-            precio: v.precio
+            precio: v.precio,
+            cotizar:v.cotizar
           });
           //console.log('Aprobado');
         }

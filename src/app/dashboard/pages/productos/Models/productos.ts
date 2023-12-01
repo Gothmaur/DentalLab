@@ -4,7 +4,7 @@ export interface Products{
     descripcion: string;
     tipo: string;
     precio: number;
-    profesor: string;
+    cotizar: boolean;
 }
 
 export interface ProductCreation{
@@ -12,7 +12,7 @@ export interface ProductCreation{
     descripcion: string;
     tipo: string;
     precio: number;
-    profesor: string;
+    cotizar: boolean;
 }
 
 export interface ProductUpdating{
@@ -20,5 +20,5 @@ export interface ProductUpdating{
     descripcion?: string;
     tipo?: string;
     precio?: number;
-    profesor?: string;
+    cotizar?: boolean;
 }

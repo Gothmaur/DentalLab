@@ -4,8 +4,6 @@
       "nombre": "Mauricio",
       "apellido1": "Trejo",
       "apellido2": "Miranda",
-      "telefono": "5511234123",
-      "direccion":"Calle buenavista no 9B, col Lindavista, CDMX",
       "email": "mau.tar@gmail.com",
       "clave": "mauricio",
       "token": "ASdbdqh9ql8GKJASs869",
@@ -15,8 +13,6 @@
       "nombre": "Gabriela",
       "apellido1": "Arvizu",
       "apellido2": "Velásquez",
-      "telefono": "5511234123",
-      "direccion":"Calle buenavista no 9B, col Lindavista, CDMX",
       "email": "gaby@mail.com",
       "clave": "gabigabi",
       "token": "ASdbdqh9y78GKJASs869",
@@ -26,8 +22,6 @@
       "nombre": "Iris",
       "apellido1": "Salinas",
       "apellido2": "Vergara",
-      "telefono": "5511234123",
-      "direccion":"Calle buenavista no 9B, col Lindavista, CDMX",
       "email": "irissave@mail.com",
       "clave": "1234",
       "token": "ASdbgqh9yD8GKpJS1s89",
@@ -36,27 +30,35 @@
   ],
   "products": [
     {
-      "id": 1,
-      "nombre": "Angular",
-      "descripcion": "Desarrollo web empleando herramientas Angular",
-      "tipo": "Front-end",
-      "precio": "100",
-      "profesor": "Josue Baez"
+      "nombre": "Corona",
+      "descripcion": "Add Desc here",
+      "tipo": "Restauraciones Metal-porcelana",
+      "precio": 1230,
+      "cotizar": false,
+      "id": 1
     },
     {
-      "nombre": "Base de datos",
-      "descripcion": "Desarrollo de bases de datos empleando SQL Server",
-      "tipo": "Base de datos",
-      "profesor": "Enrique Olvera",
-      "precio": "1234",
+      "nombre": "Encerado",
+      "descripcion": "Add Desc here",
+      "tipo": "Acrilicos y resinas",
+      "precio": "0",
+      "cotizar": true,
       "id": 2
     },
     {
-      "nombre": "Ingeniería del Software",
-      "descripcion": "Curso de análisis y diseño de diagramas",
-      "tipo": "Análisis y Diseño",
-      "profesor": "Sandy Bautista",
-      "precio": "1234",
+      "id": 1,
+      "nombre": "Corona",
+      "descripcion": "Add Desc here",
+      "precio": "1050",
+      "cotizar": false,
+      "tipo": "Restauraciones Metalicas"
+    },
+    {
+      "nombre": "prueba",
+      "descripcion": "test",
+      "tipo": "test",
+      "precio": "0",
+      "cotizar": true,
       "id": 3
     }
   ]

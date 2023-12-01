@@ -24,21 +24,18 @@ export class ProductDialogComponent {
     Validators.required, //Requerido
     Validators.minLength(2) //Tamaño minimo de 2 caracteres
   ]);
-  ProfesorControl = new FormControl<string | null>(null,[
-    Validators.required, //Requerido
-    Validators.minLength(2) //Tamaño minimo de 2 caracteres
-  ]);
   PrecioControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
   ]);
+  CotizarControl = new FormControl(false);
 
 
   productsForm = new FormGroup({
     nombre: this.NombreControl,
     descripcion: this.DescripcionControl,
     tipo: this.TipoControl,
-    profesor: this.ProfesorControl,
-    precio: this.PrecioControl
+    precio: this.PrecioControl,
+    cotizar: this.CotizarControl
   });
 
 
@@ -51,8 +48,9 @@ constructor(private dialogRef: MatDialogRef<ProductDialogComponent>,
       this.NombreControl.setValue(this.data.nombre);
       this.DescripcionControl.setValue(this.data.descripcion);
       this.TipoControl.setValue(this.data.tipo);
-      this.ProfesorControl.setValue(this.data.profesor);
       this.PrecioControl.setValue(this.data.precio.toString());
+      this.CotizarControl.setValue(this.data.cotizar);
+      if(this.CotizarControl.getRawValue()) this.PrecioControl.disable();
     }
   }
 
@@ -61,8 +59,22 @@ constructor(private dialogRef: MatDialogRef<ProductDialogComponent>,
     if(this.productsForm.invalid){
       alert("Por favor llene todos los campos correctamente");
     }else{
-      alert(JSON.stringify(this.productsForm.value));
+      this.PrecioControl.enable();
+      //alert(JSON.stringify(this.productsForm.value));
       this.dialogRef.close(this.productsForm.value);
     }
   }
+
+  onCotizarChange(): void {
+    if (this.CotizarControl.value) {
+      // Checkbox marcado: establecer el valor del campo de precio a 0 y deshabilitar
+      this.PrecioControl.setValue('0');
+      this.PrecioControl.disable();
+    } else {
+      // Checkbox no marcado: habilitar el campo de precio
+      this.PrecioControl.enable();
+    }
+  }
+  
 }
+
