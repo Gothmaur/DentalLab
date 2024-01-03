@@ -9,7 +9,6 @@ import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CommonModule } from '@angular/common';
-import { InventariosComponent } from './pages/inventarios/inventarios.component';
 
 
 
@@ -17,8 +16,7 @@ import { InventariosComponent } from './pages/inventarios/inventarios.component'
   declarations: [
     DashboardComponent,
     NavMenuComponent,
-    ToolbarComponent,
-    InventariosComponent
+    ToolbarComponent
   ],
   imports: [
     RouterOutlet,

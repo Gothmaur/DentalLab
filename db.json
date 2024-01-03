@@ -22,9 +22,10 @@
       "nombre": "Iris",
       "apellido1": "Salinas",
       "apellido2": "Vergara",
+      "telefono": "1234123412",
+      "direccion": "patito #3",
       "email": "irissave@mail.com",
       "clave": "1234",
-      "token": "ASdbgqh9yD8GKpJS1s89",
       "id": 3
     }
   ],
@@ -60,6 +61,30 @@
       "precio": "0",
       "cotizar": true,
       "id": 3
+    }
+  ],
+  "inventarios": [
+    {
+      "material": "Aluminio",
+      "fecha_ingreso": "18-01-2023",
+      "fecha_caducidad": "12-12-2024",
+      "proveedor": "Dentivalue",
+      "descripcion": "Metal para prótesis",
+      "unidad_medida": "pieza",
+      "precio": 28,
+      "cantidad_disponible": "70",
+      "id": 1
+    },
+    {
+      "material": "Yeso",
+      "fecha_ingreso": "03-01-2024",
+      "fecha_caducidad": "12-12-2024",
+      "proveedor": "DentalMaterial",
+      "descripcion": "Material de modelado",
+      "unidad_medida": "gramos",
+      "precio": 12,
+      "cantidad_disponible": "250",
+      "id": 2
     }
   ]
 }

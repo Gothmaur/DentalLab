@@ -1,7 +1,35 @@
 :host {
-    display: block;
-    margin-top: 60px; /* Ajusta según la altura de tu toolbar */
-    overflow-y: auto; /* Habilita el scrollbar vertical cuando es necesario */
-    padding: 20px;
-    height: calc(100vh - 60px); /* Ajusta según la altura de tu toolbar */
-  }
+  display: block;
+  margin-top: 60px; /* Ajusta según la altura de tu toolbar */
+  overflow-y: auto; /* Habilita el scrollbar vertical cuando es necesario */
+  padding: 20px;
+  height: calc(100vh - 60px); /* Ajusta según la altura de tu toolbar */
+}
+
+.inventario-management-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.inventario-management-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.inventario-management-description {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.inventario-table-container {
+  margin-bottom: 20px;
+}
+
+mat-flat-button {
+  margin-top: 10px;
+}
