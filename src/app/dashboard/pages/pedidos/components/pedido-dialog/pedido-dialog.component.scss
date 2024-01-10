@@ -1,0 +1,21 @@
+/* Ajusta los estilos según tus preferencias */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .field {
+    margin-bottom: 0px;
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+  
+  .checkbox-group, .select-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .fullwidth{
+    width: 100%;
+  }

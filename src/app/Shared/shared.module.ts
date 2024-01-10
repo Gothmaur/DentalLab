@@ -10,6 +10,10 @@ import { MatTableModule } from "@angular/material/table";
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { ResaltadoDirective } from "./directives/resaltado.directive";
 import { MatCardModule } from "@angular/material/card";
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { MatCardModule } from "@angular/material/card";
     MatTableModule,
     FullNamePipe,
     ResaltadoDirective,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class SharedModule { 

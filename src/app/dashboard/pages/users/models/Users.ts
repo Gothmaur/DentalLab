@@ -8,6 +8,7 @@ export interface User{
     email:string;
     clave:string;
     token:string;
+    tipo:string;
 }
 
 export interface UserCreation{
@@ -18,6 +19,7 @@ export interface UserCreation{
     direccion:string;
     email:string;
     clave:string;
+    tipo:string;
 }
 
 export interface UserUpdating{
@@ -28,4 +30,5 @@ export interface UserUpdating{
     direccion?:string;
     email?:string;
     clave?:string;
+    tipo?:string;
 }

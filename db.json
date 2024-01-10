@@ -4,18 +4,22 @@
       "nombre": "Mauricio",
       "apellido1": "Trejo",
       "apellido2": "Miranda",
-      "email": "mau.tar@gmail.com",
-      "clave": "mauricio",
-      "token": "ASdbdqh9ql8GKJASs869",
+      "telefono": "5511223344",
+      "direccion": "patito #1",
+      "email": "mau@mail.com",
+      "clave": "mau",
+      "tipo": "Administrador",
       "id": 1
     },
     {
       "nombre": "Gabriela",
       "apellido1": "Arvizu",
       "apellido2": "Velásquez",
+      "telefono": "5511223344",
+      "direccion": "patito #2",
       "email": "gaby@mail.com",
       "clave": "gabigabi",
-      "token": "ASdbdqh9y78GKJASs869",
+      "tipo": "Empleado",
       "id": 2
     },
     {
@@ -26,6 +30,7 @@
       "direccion": "patito #3",
       "email": "irissave@mail.com",
       "clave": "1234",
+      "tipo": "Cliente",
       "id": 3
     }
   ],
@@ -84,6 +89,46 @@
       "unidad_medida": "gramos",
       "precio": 12,
       "cantidad_disponible": "250",
+      "id": 2
+    }
+  ],
+  "pedidos": [
+    {
+      "dr_solicitante": "Mariana Chavarria",
+      "paciente_tratamiento": "protesis Alejandro",
+      "fecha_recepcion": "2023-11-12T06:00:00.000Z",
+      "fecha_entrega": "2023-12-12T06:00:00.000Z",
+      "tipo_protesis": "Fija",
+      "tipo_prueba": "Nucleo",
+      "color_incisal_oclusal": "",
+      "color_medio": "",
+      "color_Cervical": "",
+      "modelo": true,
+      "impresion": true,
+      "precio_total": "250",
+      "abono": "200",
+      "observaciones": "",
+      "id": 1
+    },
+    {
+      "dr_solicitante": "Dr. Smith",
+      "paciente_tratamiento": "Molar Marissa",
+      "fecha_recepcion": "2024-01-09T06:00:00.000Z",
+      "fecha_entrega": "2024-01-16T06:00:00.000Z",
+      "tipo_protesis": "Removible",
+      "tipo_prueba": "Dientes",
+      "color_incisal_oclusal": "A2",
+      "color_medio": "A2",
+      "color_Cervical": "A3",
+      "modelo": true,
+      "impresion": false,
+      "antagonista": false,
+      "mordida": true,
+      "colorimetro": true,
+      "cucharillas": false,
+      "precio_total": "250",
+      "abono": "100",
+      "observaciones": "Prueba",
       "id": 2
     }
   ]

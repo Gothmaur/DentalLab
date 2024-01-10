@@ -52,7 +52,8 @@ export class UsersComponent {
             telefono: v.telefono,
             direccion: v.direccion,
             email: v.email,
-            clave: v.clave
+            clave: v.clave,
+            tipo: v.tipo
           });
           //console.log('Aprobado');
         }

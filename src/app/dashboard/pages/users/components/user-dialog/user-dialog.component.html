@@ -77,6 +77,21 @@
                 </mat-error>
             </mat-form-field>
         </div>
+
+         <!--Combo donde se despliegan los tipos de protesis-->
+         <div class="col-6 field">
+            <mat-form-field appearance = "outline" >
+                <mat-label>Tipo de Usuario</mat-label>
+                <mat-select formControlName="tipo"  matInput type = "text" name = "tipo" required>
+                  <mat-option value="Empleado">Empleado</mat-option>
+                  <mat-option value="Cliente">Cliente</mat-option>
+                </mat-select>
+                <mat-error *ngIf = "TipoControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+        </div>
+
         <div class="field">
             <mat-form-field appearance = "outline">
                 <mat-label>Contraseña</mat-label>

@@ -11,7 +11,8 @@ export class UserMockService{
           telefono: '0011223344',
           direccion: 'falso falso',
           clave: 'Falso',
-          token: ''
+          token: '',
+          tipo:'empleado'
         }
       ];
       

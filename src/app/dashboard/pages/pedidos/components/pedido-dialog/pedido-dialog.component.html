@@ -1,0 +1,182 @@
+<h1 mat-dialog-title>{{
+    editingPedido
+    ? "Modificar Pedido: " + editingPedido.paciente_tratamiento + " del doctor " + editingPedido.dr_solicitante 
+    : "Registrar Pedido"    
+}}</h1>
+<div mat-dialog-content>
+    <form [formGroup] = "pedidosForm" class="grid">
+        <!--Combo donde se despliegan los doctores registrados-->
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline" >
+                <mat-label>Dr. Solicitante</mat-label>
+                <mat-select formControlName="dr_solicitante" matInput type = "text" name = "dr_solicitante">
+                  <mat-option *ngFor="let doctor of doctores" [value]="doctor">{{ doctor }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf = "DrSolicitanteControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <!--Campo Paciente/Tratamiento-->
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Paciente/Tratamiento</mat-label>
+                <input formControlName ="paciente_tratamiento" matInput type = "text" name = "paciente_tratamiento">
+                <mat-error *ngIf = "PacienteTratamientoControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Campo Fecha_recepción -->
+        <div class="col-6 field">
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha de Recepción</mat-label>
+                <input matInput formControlName="fecha_recepcion" [matDatepicker]="pickerRecepcion" name="fecha_recepcion" required>
+                <mat-datepicker-toggle matSuffix [for]="pickerRecepcion"></mat-datepicker-toggle>
+                <mat-datepicker #pickerRecepcion></mat-datepicker>
+                <mat-error *ngIf="FechaRecepcionControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Campo Fecha_entrega -->
+        <div class="col-6 field">
+            <mat-form-field appearance="outline">
+                <mat-label>Fecha de Entrega</mat-label>
+                <input matInput formControlName="fecha_entrega" [matDatepicker]="pickerEntrega" name="fecha_entrega" required>
+                <mat-datepicker-toggle matSuffix [for]="pickerEntrega"></mat-datepicker-toggle>
+                <mat-datepicker #pickerEntrega></mat-datepicker>
+                <mat-error *ngIf="FechaEntregaControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+         <!--Combo donde se despliegan los tipos de protesis-->
+         <div class="col-6 field">
+            <mat-form-field appearance = "outline" >
+                <mat-label>Tipo de Prótesis</mat-label>
+                <mat-select formControlName="tipo_protesis"  matInput type = "text" name = "tipo_protesis" required>
+                  <mat-option value="Fija">Fija</mat-option>
+                  <mat-option value="Removible">Removible</mat-option>
+                  <mat-option value="Protodoncia">Protodoncia</mat-option>
+                  <mat-option value="Hibrido">Híbrido</mat-option>
+                </mat-select>
+                <mat-error *ngIf = "TipoProtesisControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+        </div>
+         <!--Combo donde se despliegan los tipos de prueba-->
+         <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Tipo de Prueba</mat-label>
+                <mat-select formControlName="tipo_prueba"  matInput type = "text" name = "tipo_prueba" required>
+                  <mat-option value="Nucleo">Nucleo</mat-option>
+                  <mat-option value="Metal">Metal</mat-option>
+                  <mat-option value="Rodillo">Rodillo</mat-option>
+                  <mat-option value="Dientes">Dientes</mat-option>
+                  <mat-option value="Terminado">Terminado</mat-option>
+                </mat-select>
+                <mat-error *ngIf = "TipoPruebaControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+        </div>
+        
+         <!--Combo donde se despliegan los datos recibidos al realizar el pedido-->
+        <div class="checkbox-group col-6">
+            <span> Marque las casillas de recepción para este pedido</span><br>
+            <div>
+                <mat-checkbox formControlName="modelo" name = "modelo" appearance = "outline">Modelo</mat-checkbox>
+                <mat-checkbox formControlName="impresion" name = "impresion" appearance = "outline">Impresión</mat-checkbox>
+            </div>
+            <div>
+                <mat-checkbox formControlName="antagonista" name = "antagonista" appearance = "outline">Antagonista</mat-checkbox>
+                <mat-checkbox formControlName="mordida" name = "mordida" appearance = "outline">Mordida</mat-checkbox>
+            </div>
+            <div>
+                <mat-checkbox formControlName="colorimetro" name = "colorimetro" appearance = "outline" (change)="onColorimetroChange()">Colorímetro</mat-checkbox>
+                <mat-checkbox formControlName="cucharillas" name = "cucharillas" appearance = "outline">Cucharillas</mat-checkbox>
+            </div>
+        </div>
+        
+         <!--Combo donde se despliegan los colores dentales-->
+        <div class="select-group col-6">
+            <span> Estratificación de color</span><br>
+            <div>
+                <mat-form-field appearance = "outline" >
+                    <mat-label>Incisal/Oclusal</mat-label>
+                    <mat-select formControlName="color_incisal_oclusal"  matInput type = "text" name = "color_incisal_oclusal">
+                        <mat-option *ngFor="let color of colores" [value]="color">{{ color }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance = "outline">
+                    <mat-label>Color Medio</mat-label>
+                    <mat-select formControlName="color_medio"  matInput type = "text" name = "color_medio">
+                        <mat-option *ngFor="let color of colores" [value]="color">{{ color }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance = "outline">
+                    <mat-label>Color Cervical</mat-label>
+                    <mat-select formControlName="color_Cervical"  matInput type = "text" name = "color_Cervical">
+                        <mat-option *ngFor="let color of colores" [value]="color">{{ color }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+         <!--Campo del precio total-->
+         <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Precio Total</mat-label>
+                <input formControlName ="precio_total" matInput type = "number" name = "precio_total">
+                <mat-error *ngIf = "PrecioTotalControl.hasError('required')"> 
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "PrecioTotalControl.hasError('min')"> 
+                    No puede ser valores negativos
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!--Campo del total abonado-->
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Abono inicial</mat-label>
+                <input formControlName ="abono" matInput type = "number" name = "abono">
+                <mat-error *ngIf = "AbonoControl.hasError('required')"> 
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "AbonoControl.hasError('min')"> 
+                    No puede ser valores negativos
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-6 field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Observaciones</mat-label>
+                <textarea matInput formControlName="observaciones" type="textarea" name="observaciones">
+                </textarea>
+              </mat-form-field>
+        </div>
+
+        <div class="col-12 flex justify-content-end">
+            <button mat-button mat-dialog-close> Cancelar </button>
+            <button mat-button type="submit" (click) = "onSubmint()"> Guardar </button>
+        </div> 
+
+    </form>
+    <!--Tabla de contenidos
+
+    <pre>
+        <!--{{ usersForm.value | json}}
+    </pre>-->
+</div>

@@ -42,6 +42,9 @@ export class UserDialogComponent {
   ClaveControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
   ]);
+  TipoControl = new FormControl<string | null>(null,[
+    Validators.required, //Requerido
+  ]);
 
 
   usersForm = new FormGroup({
@@ -51,7 +54,8 @@ export class UserDialogComponent {
     telefono: this.TelefonoControl,
     direccion: this.DireccionControl,
     email: this.EmailControl,
-    clave: this.ClaveControl
+    clave: this.ClaveControl,
+    tipo: this.TipoControl
   });
 
 
@@ -68,6 +72,7 @@ constructor(private dialogRef: MatDialogRef<UserDialogComponent>,
       this.DireccionControl.setValue(this.data.direccion);
       this.EmailControl.setValue(this.data.email);
       this.ClaveControl.setValue(this.data.clave);
+      this.TipoControl.setValue(this.data.tipo);
     }
   }
 
