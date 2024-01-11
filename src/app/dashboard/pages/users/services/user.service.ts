@@ -72,7 +72,7 @@ export class UserService {
         this.notify.showSuccess("Actualización exitosa");
       },
       error: () => this.notify.showError("Error al conectar con el servidor")
-
+     });
     })
   }
 
