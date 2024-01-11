@@ -61,7 +61,12 @@ export class UserService {
   
   //Actualizar usuario
   updateUserById(id: number, usuario:UserUpdating): void{
-    this.httpClient.put(environment.baseApiURL + '/users/'+id, usuario).subscribe({
+    // Obtener el usuario original con el token
+    this.getUsersById(id).pipe(take(1)).subscribe(originalUser => {
+    // Fusionar las propiedades actualizadas y mantener el token
+    const usuarioActualizado = { ...originalUser, ...usuario };
+
+    this.httpClient.put(environment.baseApiURL + '/users/'+id, usuarioActualizado).subscribe({
       next: () => {
         this.loadUsers();
         this.notify.showSuccess("Actualización exitosa");

@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "nombre": "Mauricio",
+      "nombre": "Mauricio Alejandro",
       "apellido1": "Trejo",
       "apellido2": "Miranda",
       "telefono": "5511223344",
@@ -9,6 +9,7 @@
       "email": "mau@mail.com",
       "clave": "mau",
       "tipo": "Administrador",
+      "token": "OFwXzJIh0owbdaq4Qi5K",
       "id": 1
     },
     {
@@ -20,6 +21,7 @@
       "email": "gaby@mail.com",
       "clave": "gabigabi",
       "tipo": "Empleado",
+      "token": "OFwXzJIN0o3bdAq4Qi5K",
       "id": 2
     },
     {
@@ -31,18 +33,35 @@
       "email": "irissave@mail.com",
       "clave": "1234",
       "tipo": "Cliente",
+      "token": "OEwXkJIN0opbd4q4kiaK",
       "id": 3
+    },
+    {
+      "nombre": "Mariana",
+      "apellido1": "Chavarria",
+      "apellido2": null,
+      "telefono": "1234123412",
+      "direccion": "patito #4",
+      "email": "mari@mail.com",
+      "clave": "1234",
+      "tipo": "Cliente",
+      "token": "OEwXkJIN0opbdAq4kiaK",
+      "id": 4
+    },
+    {
+      "nombre": "Pedro",
+      "apellido1": "Peres",
+      "apellido2": "Pereira",
+      "telefono": "1231231231",
+      "direccion": "PintorPortugues",
+      "email": "ppp@mail.com",
+      "clave": "asd",
+      "tipo": "Cliente",
+      "token": "PhkIcEJVKcujjwweLoX2",
+      "id": 5
     }
   ],
   "products": [
-    {
-      "nombre": "Corona",
-      "descripcion": "Add Desc here",
-      "tipo": "Restauraciones Metal-porcelana",
-      "precio": 1230,
-      "cotizar": false,
-      "id": 1
-    },
     {
       "nombre": "Encerado",
       "descripcion": "Add Desc here",
@@ -58,14 +77,6 @@
       "precio": "1050",
       "cotizar": false,
       "tipo": "Restauraciones Metalicas"
-    },
-    {
-      "nombre": "prueba",
-      "descripcion": "test",
-      "tipo": "test",
-      "precio": "0",
-      "cotizar": true,
-      "id": 3
     }
   ],
   "inventarios": [
@@ -76,8 +87,8 @@
       "proveedor": "Dentivalue",
       "descripcion": "Metal para prótesis",
       "unidad_medida": "pieza",
-      "precio": 28,
-      "cantidad_disponible": "70",
+      "precio": "28",
+      "cantidad_disponible": "100",
       "id": 1
     },
     {

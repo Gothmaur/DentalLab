@@ -45,12 +45,6 @@ goToPedidos() {
     });
   }
 
-  goToInscriptions():void{
-    this.router.navigate(['dashboard','inscripciones'],{
-      //relativeTo: this.activatedRoute,
-    });
-  }
-
 }
 
 

@@ -31,4 +31,5 @@ export interface UserUpdating{
     email?:string;
     clave?:string;
     tipo?:string;
+    token?:string;
 }
