@@ -19,43 +19,40 @@
             </mat-form-field>
         </div>
 
+        <!-- Campo Fecha_ingreso -->
         <div class="col-6 field">
-            <mat-form-field appearance = "outline">
+            <mat-form-field appearance="outline">
                 <mat-label>Fecha de ingreso</mat-label>
-                <input formControlName ="fecha_ingreso" matInput type = "text" name = "fecha_ingreso">
-                <mat-error *ngIf = "FechaIngresoControl.hasError('required')">
+                <input matInput formControlName="fecha_ingreso" [matDatepicker]="pickerIngreso" name="fecha_ingreso">
+                <mat-datepicker-toggle matSuffix [for]="pickerIngreso"></mat-datepicker-toggle>
+                <mat-datepicker #pickerIngreso></mat-datepicker>
+                <mat-error *ngIf="FechaIngresoControl.hasError('required')">
                     Este campo es requerido
-                </mat-error>
-                <mat-error *ngIf = "FechaIngresoControl.hasError('minlength')"> 
-                    Debe contar con al menos 2 caracteres
                 </mat-error>
             </mat-form-field>
         </div>
-
+        <!-- Campo Fecha_caducidad -->
         <div class="col-6 field">
-            <mat-form-field appearance = "outline">
+            <mat-form-field appearance="outline">
                 <mat-label>Fecha de caducidad</mat-label>
-                <input formControlName ="fecha_caducidad" matInput type = "text" name = "fecha_caducidad">
-                <mat-error *ngIf = "FechaCaducidadControl.hasError('required')">
+                <input matInput formControlName="fecha_caducidad" [matDatepicker]="pickerCaducidad" name="fecha_caducidad">
+                <mat-datepicker-toggle matSuffix [for]="pickerCaducidad"></mat-datepicker-toggle>
+                <mat-datepicker #pickerCaducidad></mat-datepicker>
+                <mat-error *ngIf="FechaCaducidadControl.hasError('required')">
                     Este campo es requerido
-                </mat-error>
-                <mat-error *ngIf = "FechaCaducidadControl.hasError('minlength')"> 
-                    Debe contar con al menos 2 caracteres
                 </mat-error>
             </mat-form-field>
         </div>
-
         <div class="col-6 field">
             <mat-form-field appearance = "outline">
                 <mat-label>Proveedor</mat-label>
-                <input formControlName ="proveedor" matInput type = "text" name = "proveedor">
-                <mat-error *ngIf = "ProveedorControl.hasError('minlength')"> 
-                    Debe contar con al menos 2 caracteres
-                </mat-error>
-                <mat-error *ngIf = "ProveedorControl.hasError('required')"> 
+                <mat-select formControlName="proveedor"  matInput type = "text" name = "proveedor">
+                    <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor">{{ proveedor }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf = "ProveedorControl.hasError('required')">
                     Este campo es requerido
                 </mat-error>
-            </mat-form-field>
+              </mat-form-field>
         </div>
 
         <div class="col-6 field">
@@ -74,20 +71,21 @@
         <div class="col-6 field">
             <mat-form-field appearance = "outline">
                 <mat-label>Unidad de medida</mat-label>
-                <input formControlName ="unidad_medida" matInput type = "text" name = "unidad_medida">
+                <mat-select formControlName="unidad_medida"  matInput type = "text" name = "unidad_medida" required>
+                  <mat-option value="Piezas">Piezas</mat-option>
+                  <mat-option value="Gramos">Gramos</mat-option>
+                  <mat-option value="Mililitros">Mililitros</mat-option>
+                </mat-select>
                 <mat-error *ngIf = "UnidadMedidaControl.hasError('required')">
                     Este campo es requerido
                 </mat-error>
-                <mat-error *ngIf = "UnidadMedidaControl.hasError('minlength')"> 
-                    Debe contar con al menos 2 caracteres
-                </mat-error>
-            </mat-form-field>
+              </mat-form-field>
         </div>
 
         <div class="col-6 field">
             <mat-form-field appearance = "outline">
                 <mat-label>Cantidad</mat-label>
-                <input formControlName ="cantidad_disponible" matInput type = "text" name = "cantidad_disponible">
+                <input formControlName ="cantidad_disponible" matInput type = "number" name = "cantidad_disponible">
                 <mat-error *ngIf = "CantidadControl.hasError('required')">
                     Este campo es requerido
                 </mat-error>
@@ -103,6 +101,9 @@
                 <input formControlName ="precio" matInput type = "number" name = "precio">
                 <mat-error *ngIf = "PrecioControl.hasError('required')"> 
                     Este campo es requerido. El valor debe ser mayor a 0.
+                </mat-error>
+                <mat-error *ngIf = "PrecioControl.hasError('min')"> 
+                    No puede ser valores negativos
                 </mat-error>
             </mat-form-field>
         </div>

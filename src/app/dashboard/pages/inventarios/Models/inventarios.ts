@@ -7,7 +7,7 @@ export interface Inventarios{
     descripcion: string,
     unidad_medida: string,
     precio: number,
-    cantidad_disponible: string
+    cantidad_disponible: number
 }
 
 export interface InventarioCreation{
@@ -18,7 +18,7 @@ export interface InventarioCreation{
     descripcion: string,
     unidad_medida: string,
     precio: number,
-    cantidad_disponible: string
+    cantidad_disponible: number
 }
 
 export interface InventarioUpdating{
@@ -29,5 +29,5 @@ export interface InventarioUpdating{
     descripcion?: string,
     unidad_medida?: string,
     precio?: number,
-    cantidad_disponible?: string
+    cantidad_disponible?: number
 }

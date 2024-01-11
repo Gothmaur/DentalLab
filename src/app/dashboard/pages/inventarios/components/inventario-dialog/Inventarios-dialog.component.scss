@@ -1,0 +1,28 @@
+/* Ajustes generales para el formulario */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .field {
+    width: 100%;
+  }
+  
+  /* Estilo para los campos de entrada */
+  mat-form-field {
+    width: 100%;
+  }
+  
+  /* Alinear los botones al final del formulario */
+  .flex {
+    display: flex;
+  }
+  
+  .justify-content-end {
+    justify-content: flex-end;
+  }
+  
+  /* Otras personalizaciones según tus preferencias */
+  /* Puedes agregar más estilos según tus necesidades */
+  

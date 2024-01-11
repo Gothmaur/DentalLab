@@ -26,6 +26,8 @@ export class ProductDialogComponent {
   ]);
   PrecioControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
+    Validators.min(0), //Valor minimo
+    
   ]);
   CotizarControl = new FormControl(false);
 

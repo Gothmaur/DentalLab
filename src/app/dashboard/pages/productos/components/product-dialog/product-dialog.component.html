@@ -35,14 +35,17 @@
         <div class="col-6 field">
             <mat-form-field appearance = "outline">
                 <mat-label>Tipo</mat-label>
-                <input formControlName ="tipo" matInput type = "text" name = "tipo">
-                <mat-error *ngIf = "TipoControl.hasError('minlength')"> 
-                    Debe contar con al menos 2 caracteres
-                </mat-error>
-                <mat-error *ngIf = "TipoControl.hasError('required')"> 
+                <mat-select formControlName="tipo"  matInput type = "text" name = "tipo">
+                  <mat-option value="Protesis Removibles y Prostodoncia">Protesis Removibles y Prostodoncia</mat-option>
+                  <mat-option value="Restauraciones Metal/Porcelana">Restauraciones Metal/Porcelana</mat-option>
+                  <mat-option value="Acrilicos y Resinas">Acrilicos y Resinas</mat-option>
+                  <mat-option value="Restauraciones Metalicas">Restauraciones Metalicas</mat-option>
+                  <mat-option value="Restauraciones Ceramicas Libre de Metal">Restauraciones Ceramicas Libre de Metal</mat-option>
+                </mat-select>
+                <mat-error *ngIf = "TipoControl.hasError('required')">
                     Este campo es requerido
                 </mat-error>
-            </mat-form-field>
+              </mat-form-field>
         </div>
 
         <div class="col-12 field">
@@ -58,6 +61,9 @@
                 <input formControlName ="precio" matInput type = "number" name = "precio">
                 <mat-error *ngIf = "PrecioControl.hasError('required')"> 
                     Este campo es requerido, marque 0 si no tiene precio
+                </mat-error>
+                <mat-error *ngIf = "PrecioControl.hasError('min')"> 
+                    El valor no puede ser menor a 0
                 </mat-error>
             </mat-form-field>
         </div>

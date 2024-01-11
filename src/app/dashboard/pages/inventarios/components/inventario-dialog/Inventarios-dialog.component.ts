@@ -18,15 +18,12 @@ export class InventarioDialogComponent {
   ]);
   FechaIngresoControl = new FormControl<Date | null>(null,[
     Validators.required, //Requerido
-    Validators.minLength(2) //Tamaño minimo de 2 caracteres
   ]);
   FechaCaducidadControl = new FormControl<Date | null>(null,[
     Validators.required, //Requerido
-    Validators.minLength(2) //Tamaño minimo de 2 caracteres
   ]);
   ProveedorControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
-    Validators.minLength(2) //Tamaño minimo de 2 caracteres
   ]);
   DescripcionControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
@@ -34,14 +31,14 @@ export class InventarioDialogComponent {
   ]);
   UnidadMedidaControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
-    Validators.minLength(2) //Tamaño minimo de 2 caracteres
   ]);
   CantidadControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
-    Validators.minLength(2) //Tamaño minimo de 2 caracteres
+    Validators.min(0) //Tamaño minimo de 2 caracteres
   ]);
   PrecioControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
+    Validators.min(0),
   ]);
 
 
@@ -57,6 +54,7 @@ export class InventarioDialogComponent {
   });
 
 
+  proveedores: string[] = ['Dentilab', 'Deposito Dental: Madero', 'Deposito Dental: La Raza']; // Obtendrías estos datos de tu servicio
 
 constructor(private dialogRef: MatDialogRef<InventarioDialogComponent>,
   @Inject(MAT_DIALOG_DATA) private data?:Inventarios,
@@ -69,7 +67,7 @@ constructor(private dialogRef: MatDialogRef<InventarioDialogComponent>,
       this.ProveedorControl.setValue(this.data.proveedor);
       this.DescripcionControl.setValue(this.data.descripcion);
       this.UnidadMedidaControl.setValue(this.data.unidad_medida);
-      this.CantidadControl.setValue(this.data.cantidad_disponible);
+      this.CantidadControl.setValue(this.data.cantidad_disponible.toString());
       this.PrecioControl.setValue(this.data.precio.toString());
     }
   }
