@@ -10,6 +10,7 @@ import { PedidoDetailsComponent } from './pages/pedido-details/pedido-details.co
 import { PedidoDialogComponent } from './components/pedido-dialog/pedido-dialog.component';
 import { PedidoTableComponent } from './components/pedido-table/pedido-table.component';
 import { PedidosRoutingModule } from './pedidos-routing.module';
+import { PedidoIndexComponent } from './pages/pedido-index/pedido-index.component';
 
 
 
@@ -18,7 +19,8 @@ import { PedidosRoutingModule } from './pedidos-routing.module';
     PedidosComponent,
     PedidoDetailsComponent,
     PedidoDialogComponent,
-    PedidoTableComponent
+    PedidoTableComponent,
+    PedidoIndexComponent
   ],
   imports: [
     RouterModule,

@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     DashboardComponent,
     NavMenuComponent,
-    ToolbarComponent
+    ToolbarComponent,
   ],
   imports: [
     RouterOutlet,

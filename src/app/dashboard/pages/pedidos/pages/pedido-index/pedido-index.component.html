@@ -1,0 +1,20 @@
+<div class="pedido-management-container">
+    <h1 class="pedido-management-title">Administración de Pedidos</h1>
+    <p class="pedido-management-description" appResaltado>
+      Aquí podrás visualizar la información de los pedidos solicitados del laboratorio.
+    </p>
+  
+    <div class="pedido-table-container">
+      <app-pedido-table
+        [dataSource]="(pedidos | async) || []"
+        (deletePedido)="onDeletePedido($event)"
+        (editPedido)="onEditPedido($event)"
+      ></app-pedido-table>
+    </div>
+  
+    <button mat-flat-button color="primary" type="button" (click)="onCreatePedido()">
+      <mat-icon>add</mat-icon>
+      Agregar Pedido
+    </button>
+  </div>
+  

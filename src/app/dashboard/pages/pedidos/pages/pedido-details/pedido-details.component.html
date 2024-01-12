@@ -1,1 +1,91 @@
-<p>product-details works!</p>
+<!-- order-detail.component.html (o el nombre de tu archivo HTML) -->
+
+<div *ngIf="pedido">
+    <h2>Detalles del Pedido</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <td>{{ pedido.id }}</td>
+      </tr>
+      <tr>
+        <th>Doctor Solicitante</th>
+        <td>{{ pedido.dr_solicitante }}</td>
+      </tr>
+      <tr>
+        <th>Paciente en Tratamiento</th>
+        <td>{{ pedido.paciente_tratamiento }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de Recepción</th>
+        <td>{{ pedido.fecha_recepcion | date:'short' }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de Entrega</th>
+        <td>{{ pedido.fecha_entrega | date:'short' }}</td>
+      </tr>
+      <tr>
+        <th>Tipo de Prótesis</th>
+        <td>{{ pedido.tipo_protesis }}</td>
+      </tr>
+      <tr>
+        <th>Tipo de Prueba</th>
+        <td>{{ pedido.tipo_prueba }}</td>
+      </tr>
+      <tr>
+        <th>Color Incisal/Oclusal</th>
+        <td>{{ pedido.color_incisal_oclusal ? pedido.color_incisal_oclusal : 'NA' }}</td>
+      </tr>
+      <tr>
+        <th>Color Medio</th>
+        <td>{{ pedido.color_medio ? pedido.color_medio : 'NA' }}</td>
+      </tr>
+      <tr>
+        <th>Color Cervical</th>
+        <td>{{ pedido.color_Cervical ? pedido.color_Cervical : 'NA'}}</td>
+      </tr>
+      <tr>
+        <th>Modelo</th>
+        <td>{{ pedido.modelo ? 'Sí' : 'No' }}</td>
+      </tr>
+      <tr>
+        <th>Impresión</th>
+        <td>{{ pedido.impresion ? 'Sí' : 'No' }}</td>
+      </tr>
+      <tr>
+        <th>Antagonista</th>
+        <td>{{ pedido.antagonista ? 'Sí' : 'No' }}</td>
+      </tr>
+      <tr>
+        <th>Mordida</th>
+        <td>{{ pedido.mordida ? 'Sí' : 'No' }}</td>
+      </tr>
+      <tr>
+        <th>Colorímetro</th>
+        <td>{{ pedido.colorimetro ? 'Sí' : 'No' }}</td>
+      </tr>
+      <tr>
+        <th>Cucharillas</th>
+        <td>{{ pedido.cucharillas ? 'Sí' : 'No' }}</td>
+      </tr>
+      <tr>
+        <th>Precio Total</th>
+        <td>{{ pedido.precio_total | currency }}</td>
+      </tr>
+      <tr>
+        <th>Abono</th>
+        <td>{{ pedido.abono | currency }}</td>
+      </tr>
+      <tr>
+        <th>Restante</th>
+        <td>{{ (pedido.precio_total - pedido.abono ) | currency }}</td>
+      </tr>
+
+      <tr>
+        <th>Observaciones</th>
+        <td>{{ pedido.observaciones }}</td>
+      </tr>
+    </table>
+  </div>
+  <button mat-icon-button routerLink="..">
+    <mat-icon>arrow_back</mat-icon>
+</button>

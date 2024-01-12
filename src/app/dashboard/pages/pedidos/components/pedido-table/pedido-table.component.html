@@ -12,7 +12,7 @@
     
     <ng-container matColumnDef="pendiente">
       <th mat-header-cell *matHeaderCellDef appResaltado> Pendiente a pagar </th>
-      <td mat-cell *matCellDef="let element"> {{element.precio_total - element.abono}} </td>
+      <td mat-cell *matCellDef="let element"> {{(element.precio_total - element.abono) | currency}} </td>
     </ng-container>
 
     <ng-container matColumnDef="fecha_entrega">
