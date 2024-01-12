@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UserDetailComponent {
   
-  public user: User | null = null;
+  public user: User | undefined;
   public userId?: number;
 
   ngOnInit(): void {
@@ -24,6 +24,7 @@ export class UserDetailComponent {
         if(id!=null){
           this.userId = +id;
           this.loadUser();
+          console.log(this.user);
       }
       }
     });
@@ -36,6 +37,7 @@ export class UserDetailComponent {
       this.notification.showError(`${this.activatedRoute.snapshot.params['id']} no es un ID válido`);
     }else{
       this.userId = +this.activatedRoute.snapshot.params['id'];
+      this.userService.loadUsers();
       this.loadUser();
     }
   }
@@ -43,8 +45,8 @@ export class UserDetailComponent {
   loadUser():void{
     if(this.userId){
       this.userService.getUsersById(this.userId).subscribe({
-        next:(user) => 
-          console.log(user),
+        next:(data) => 
+          this.user = data
       });
     }
   }

@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { RouterModule } from '@angular/router';
 import { UsersRoutingModule } from './users-routing.module';
+import { UserIndexComponent } from './pages/user-index/user-index.component';
 
  
 
@@ -21,7 +22,8 @@ import { UsersRoutingModule } from './users-routing.module';
     UsersComponent,
     UsersTableComponent,
     UserDialogComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    UserIndexComponent
   ],
   imports: [
     RouterModule,
@@ -32,7 +34,7 @@ import { UsersRoutingModule } from './users-routing.module';
     UsersRoutingModule
   ],
   exports:[
-    UsersComponent
+    UsersComponent,
   ],
   providers:[
     {
@@ -41,10 +43,7 @@ import { UsersRoutingModule } from './users-routing.module';
     },
     {
       provide: UserService,
-      useFactory: () => {
-        const Is_Dev = false;
-        return Is_Dev ? new UserMockService() :  UsersComponent;
-      },
+      useClass: UserService, // Proporciona una instancia de UserService
     },
   ]
 

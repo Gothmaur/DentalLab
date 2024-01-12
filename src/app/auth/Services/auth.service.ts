@@ -8,6 +8,7 @@ import { User } from 'src/app/dashboard/pages/users/models/Users';
 import { environment } from 'src/environment/environment';
 import { AuthActions } from 'src/app/store/auth/auth.actions';
 import { Store } from '@ngrx/store';
+import { selectAuthUser } from 'src/app/store/auth/auth.selector';
 import { Token } from '@angular/compiler';
 
 @Injectable({
@@ -20,9 +21,8 @@ export class AuthService {
   
 
   constructor(private notify:NotifyService, private router:Router, private httpClient:HttpClient,private store: Store) { }
-
+  
   isAuthenticated(): Observable<boolean>{
-    //return this.authUsers$.pipe(take(1),map( (user)=> !!user ));
     //Usando JSON-server : environment.baseApiURL + '/users'
     //Usando el servicio spring : : environment.springApiURL + '/authenticated'
     return this.httpClient.get<User>(environment.springApiURL + '/authenticated',{
@@ -35,6 +35,8 @@ export class AuthService {
     }).pipe(
       map((usersResult) =>{
         if(usersResult){
+          console.log("usuario:");
+          console.log(usersResult);
           const authUser = usersResult;
           this.store.dispatch(AuthActions.setAuthUser({payload:authUser}));
         }
@@ -57,8 +59,10 @@ export class AuthService {
           //this._authUsers$.next(response[0]);
           //Respuesta en store
           this.store.dispatch(AuthActions.setAuthUser({payload : authUser}));
-          console.log("Asigno token "+ authUser.token);
+          //console.log("Asigno token "+ authUser.token);
+          localStorage.setItem("token", authUser.token);
           this.router.navigate(['/dashboard/home']);
+          //console.log("Navego token ");
         }else{
           this.notify.showError('E-mail o contraseña no validos');
           this.store.dispatch(AuthActions.setAuthUser({payload : null}));

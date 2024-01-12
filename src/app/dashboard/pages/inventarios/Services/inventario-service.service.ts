@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, map, mergeMap, take } from 'rxjs';
 import { NotifyService } from 'src/app/core/services/notify.service';
 import { HttpClient } from '@angular/common/http';
 import { InventarioCreation, InventarioUpdating, Inventarios } from '../Models/inventarios';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class InventarioService {
   
   //cargar inventarios
   loadInventarios(): void{
-    this.httpClient.get<Inventarios[]>('http://localhost:3000/inventarios').subscribe({//Se consultan los datos de la DB usando http
+    this.httpClient.get<Inventarios[]>(environment.springApiURL + '/inventarios').subscribe({//Se consultan los datos de la DB usando http
       next:(response)=> {
         console.log(response);
         this.inventarios$.next(response);
@@ -43,7 +44,7 @@ export class InventarioService {
 
   //Crear inventario en la vista
   createInventario(inventario:InventarioCreation): void{
-    this.httpClient.post<Inventarios>('http://localhost:3000/inventarios',inventario).pipe( //
+    this.httpClient.post<Inventarios>(environment.springApiURL + '/inventarios',inventario).pipe( //
       mergeMap((inventarioNuevo) => this.inventarios$.pipe(
         take(1),
         map((arrayActual)=>[...arrayActual, inventarioNuevo])
@@ -58,7 +59,7 @@ export class InventarioService {
   
   //Actualizar inventario
   updateInventarioById(id: number, inventario:InventarioUpdating): void{
-    this.httpClient.put('http://localhost:3000/inventarios/'+id, inventario).subscribe({
+    this.httpClient.put(environment.springApiURL + '/inventarios/'+id, inventario).subscribe({
       next: () => this.loadInventarios(),
       error: () => this.notify.showError("Error al conectar con el servidor")
 
@@ -67,7 +68,7 @@ export class InventarioService {
 
   //Eliminar inventario
   deleteInventarioById(id: number): void{
-    this.httpClient.delete<Inventarios>('http://localhost:3000/inventarios/'+id) //Eliminar inventario de la lista
+    this.httpClient.delete<Inventarios>(environment.springApiURL + '/inventarios/'+id) //Eliminar inventario de la lista
     .pipe( mergeMap( (/* NecesitoVariable? */) => this.inventarios$.pipe(
       take(1),
       map( (arrayActual) => arrayActual.filter( (u) => u.id !== id) )//Filtrar lista sin el inventario eliminado

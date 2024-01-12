@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
-import { UsersComponent } from './users.component';
+import { UserIndexComponent } from './pages/user-index/user-index.component';
 
 @NgModule({
   imports: [RouterModule.forChild([
     {
       //dashboard/users
-      path:'users', 
-      component: UsersComponent
+      path:'', 
+      component: UserIndexComponent
     },
     {
       //dashboard/users/:id
