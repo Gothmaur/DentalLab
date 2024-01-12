@@ -1,0 +1,20 @@
+<div class="inventario-management-container">
+    <h1 class="inventario-management-title">Administración de Inventarios</h1>
+    <p class="inventario-management-description" appResaltado>
+      Aquí podrás visualizar la información de los productos contenidos en el inventario del laboratorio.
+    </p>
+  
+    <div class="inventario-table-container">
+      <app-inventario-table
+        [dataSource]="(inventarios | async) || []"
+        (deleteProduct)="onDeleteInventario($event)"
+        (editProduct)="onEditInventario($event)"
+      ></app-inventario-table>
+    </div>
+  
+    <button mat-flat-button color="primary" type="button" (click)="onCreateInventario()">
+      <mat-icon>add</mat-icon>
+      Agregar inventario
+    </button>
+  </div>
+  

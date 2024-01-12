@@ -11,6 +11,7 @@ import { InventarioDialogComponent } from './components/inventario-dialog/Invent
 import { InventarioTableComponent } from './components/inventario-table/inventario-table.component';
 import { InventarioDetailsComponent } from './pages/inventario-details/inventario-details.component';
 import { inventariosRoutingModule } from './inventarios-routing.module';
+import { InventarioIndexComponent } from './pages/inventario-index/inventario-index.component';
 
 
 
@@ -19,7 +20,8 @@ import { inventariosRoutingModule } from './inventarios-routing.module';
     InventariosComponent,
     InventarioDialogComponent,
     InventarioTableComponent,
-    InventarioDetailsComponent
+    InventarioDetailsComponent,
+    InventarioIndexComponent
   ],
   imports: [
     RouterModule,

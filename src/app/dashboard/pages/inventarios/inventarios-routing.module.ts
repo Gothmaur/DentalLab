@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { InventariosComponent } from './inventarios.component';
 import { InventarioDetailsComponent } from './pages/inventario-details/inventario-details.component';
+import { InventarioIndexComponent } from './pages/inventario-index/inventario-index.component';
 
 @NgModule({
   imports: [RouterModule.forChild([
     {
       //dashboard/inventarios
-      path:'inventarios', 
-      component: InventariosComponent
+      path:'', 
+      component: InventarioIndexComponent
     },
     {
       //dashboard/inventarios/:id

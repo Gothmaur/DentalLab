@@ -1,1 +1,45 @@
-<p>product-details works!</p>
+<div *ngIf="inventario">
+    <h2>Detalles del Inventario</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <td>{{ inventario.id }}</td>
+      </tr>
+      <tr>
+        <th>Material</th>
+        <td>{{ inventario.material }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de Ingreso</th>
+        <td>{{ inventario.fecha_ingreso | date:'yyyy-MM-dd' }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de Caducidad</th>
+        <td>{{ inventario.fecha_caducidad | date:'yyyy-MM-dd' }}</td>
+      </tr>
+      <tr>
+        <th>Proveedor</th>
+        <td>{{ inventario.proveedor }}</td>
+      </tr>
+      <tr>
+        <th>Descripción</th>
+        <td>{{ inventario.descripcion }}</td>
+      </tr>
+      <tr>
+        <th>Unidad de Medida</th>
+        <td>{{ inventario.unidad_medida }}</td>
+      </tr>
+      <tr>
+        <th>Precio</th>
+        <td>{{ inventario.precio | currency }}</td>
+      </tr>
+      <tr>
+        <th>Cantidad Disponible</th>
+        <td>{{ inventario.cantidad_disponible }}</td>
+      </tr>
+    </table>
+  </div>
+  
+  <button mat-icon-button routerLink="..">
+    <mat-icon>arrow_back</mat-icon>
+</button>

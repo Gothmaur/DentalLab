@@ -3,7 +3,6 @@ import { RouterModule } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
 import { ProductosComponent } from "./pages/productos/productos.component";
 import { UsersComponent } from "./pages/users/users.component";
-import { InscripcionesComponent } from "./pages/inscripciones/inscripciones.component";
 import { PedidosComponent } from "./pages/pedidos/pedidos.component";
 import { InventariosComponent } from "./pages/inventarios/inventarios.component";
 
@@ -24,12 +23,6 @@ import { InventariosComponent } from "./pages/inventarios/inventarios.component"
                 path:'products',
                 component: ProductosComponent,
                 loadChildren: () => import('./pages/productos/productos.module').then( (m) => m.ProductosModule),
-              },
-              {
-                //dashboard/inscripciones
-                path:'inscripciones',
-                component: InscripcionesComponent,
-                loadChildren: () => import('./pages/inscripciones/inscripciones.module').then( (m) => m.InscripcionesModule),
               },
               {
                 //dashboard/pedidos
