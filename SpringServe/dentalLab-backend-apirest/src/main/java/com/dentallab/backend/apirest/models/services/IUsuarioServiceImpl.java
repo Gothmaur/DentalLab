@@ -46,11 +46,19 @@ public class IUsuarioServiceImpl implements IUsuarioService{
         return usuarioDao.findByEmailAndClave(email, clave);
     }
 	
-	//Intento de consulta por email y clave
+	//Intento de consulta por token
 	@Override
 	@Transactional(readOnly = true)
 	public Usuarios findByToken(String token) {
 	    return usuarioDao.findByToken(token);
+	}
+
+	//Intento de consulta por tipo
+	@Override
+	@Transactional(readOnly = true)
+	public List<Usuarios> findAllByTipo(String tipo) {
+		// TODO Auto-generated method stub
+		return usuarioDao.findAllByTipo(tipo);
 	}
 		
 

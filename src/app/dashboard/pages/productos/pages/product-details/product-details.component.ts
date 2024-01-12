@@ -29,21 +29,21 @@ export class ProductDetailsComponent {
     });
   }
 
-  constructor(private activatedRoute: ActivatedRoute, private router:Router, private notification: NotifyService, private userService:ProductService){
+  constructor(private activatedRoute: ActivatedRoute, private router:Router, private notification: NotifyService, private productService:ProductService){
     console.log("Intento imprimir el usuario");
     if(!Number(this.activatedRoute.snapshot.params['id'])){
       this.router.navigate(['dashboard','users']);
       this.notification.showError(`${this.activatedRoute.snapshot.params['id']} no es un ID válido`);
     }else{
       this.productoId = +this.activatedRoute.snapshot.params['id'];
-      this.userService.loadProducts();
+      this.productService.loadProducts();
       this.loadProduct();
     }
   }
 
   loadProduct():void{
     if(this.productoId){
-      this.userService.getProductsById(this.productoId).subscribe({
+      this.productService.getProductsById(this.productoId).subscribe({
         next:(data) => 
           this.producto = data
       });

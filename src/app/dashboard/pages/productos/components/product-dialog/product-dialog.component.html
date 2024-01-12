@@ -35,12 +35,10 @@
         <div class="col-6 field">
             <mat-form-field appearance = "outline">
                 <mat-label>Tipo</mat-label>
-                <mat-select formControlName="tipo"  matInput type = "text" name = "tipo">
-                  <mat-option value="Protesis Removibles y Prostodoncia">Protesis Removibles y Prostodoncia</mat-option>
-                  <mat-option value="Restauraciones Metal/Porcelana">Restauraciones Metal/Porcelana</mat-option>
-                  <mat-option value="Acrilicos y Resinas">Acrilicos y Resinas</mat-option>
-                  <mat-option value="Restauraciones Metalicas">Restauraciones Metalicas</mat-option>
-                  <mat-option value="Restauraciones Ceramicas Libre de Metal">Restauraciones Ceramicas Libre de Metal</mat-option>
+                <mat-select formControlName="tipo" matInput type="text" name="tipo">
+                    <mat-option *ngFor="let tipoProducto of TP" [value]="tipoProducto">
+                    {{ tipoProducto.nombre }}
+                    </mat-option>
                 </mat-select>
                 <mat-error *ngIf = "TipoControl.hasError('required')">
                     Este campo es requerido

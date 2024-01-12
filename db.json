@@ -63,20 +63,28 @@
   ],
   "products": [
     {
-      "nombre": "Encerado de diagnostico",
+      "nombre": "Corona Collar Less",
       "descripcion": "Add Desc here",
-      "tipo": "Acrilicos y Resinas",
-      "precio": 300,
+      "tipo": 2,
+      "precio": "1500",
       "cotizar": false,
       "id": 2
     },
     {
-      "nombre": "Corona Collar Less",
+      "nombre": "Encerado de diagnostico",
       "descripcion": "Add Desc here",
-      "tipo": "Restauraciones Metal/Porcelana",
-      "precio": 1500,
+      "tipo": 1,
+      "precio": "300",
       "cotizar": false,
       "id": 1
+    },
+    {
+      "nombre": "Corona Collar less oro",
+      "descripcion": "Add Desc here",
+      "tipo": 4,
+      "precio": "0",
+      "cotizar": true,
+      "id": 3
     }
   ],
   "inventarios": [
@@ -116,7 +124,7 @@
   ],
   "pedidos": [
     {
-      "dr_solicitante": "Mariana Chavarria",
+      "dr_solicitante": "Iris Salinas",
       "paciente_tratamiento": "protesis Alejandro",
       "fecha_recepcion": "2023-11-12T06:00:00.000Z",
       "fecha_entrega": "2023-12-12T06:00:00.000Z",
@@ -133,7 +141,7 @@
       "id": 1
     },
     {
-      "dr_solicitante": "Dr. Smith",
+      "dr_solicitante": "Iris Salinas",
       "paciente_tratamiento": "Molar Marissa",
       "fecha_recepcion": "2024-01-09T06:00:00.000Z",
       "fecha_entrega": "2024-01-16T06:00:00.000Z",

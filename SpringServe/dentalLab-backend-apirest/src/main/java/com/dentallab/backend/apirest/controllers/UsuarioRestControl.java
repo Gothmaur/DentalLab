@@ -34,9 +34,14 @@ public class UsuarioRestControl {
 		return usuarioService.findAll();
 	}
 	
-	@GetMapping("/users/{id}")
+	@GetMapping("/users/id/{id}")
 	public Usuarios show(@PathVariable Integer id) {
 		return usuarioService.findById(id);
+	}
+	
+	@GetMapping("/users/tipo/{tipo}")
+	public List<Usuarios> show(@PathVariable String tipo) {
+		return usuarioService.findAllByTipo(tipo);
 	}
 	
 	@PostMapping("/users")

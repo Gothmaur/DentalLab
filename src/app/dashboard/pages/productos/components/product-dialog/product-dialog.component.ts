@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Products } from '../../Models/productos';
+import { Products, TipoProducto } from '../../Models/productos';
+import { ProductService } from '../../Services/product-service.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-product-dialog',
@@ -20,9 +22,8 @@ export class ProductDialogComponent {
     Validators.required, //Requerido
     Validators.minLength(2) //Tamaño minimo de 2 caracteres
   ]);
-  TipoControl = new FormControl<string | null>(null,[
+  TipoControl = new FormControl<TipoProducto | null>(null,[
     Validators.required, //Requerido
-    Validators.minLength(2) //Tamaño minimo de 2 caracteres
   ]);
   PrecioControl = new FormControl<string | null>(null,[
     Validators.required, //Requerido
@@ -40,11 +41,22 @@ export class ProductDialogComponent {
     cotizar: this.CotizarControl
   });
 
-
+TP!:TipoProducto[];
 
 constructor(private dialogRef: MatDialogRef<ProductDialogComponent>,
+  private productService:ProductService,
   @Inject(MAT_DIALOG_DATA) private data?:Products,
   ){
+    console.log(data);
+    this.productService.loadTP();
+    this.productService.getTP().subscribe((tipoProductos) => {
+      this.TP = tipoProductos.map((tp) => ({
+        ...tp,
+        nombre: tp.nombre,
+        descripcion: tp.desc
+      }));
+    });
+    this.productService.loadTP();
     if(this.data){
       this.editingProduct = data;
       this.NombreControl.setValue(this.data.nombre);
@@ -54,6 +66,7 @@ constructor(private dialogRef: MatDialogRef<ProductDialogComponent>,
       this.CotizarControl.setValue(this.data.cotizar);
       if(this.CotizarControl.getRawValue()) this.PrecioControl.disable();
     }
+    
   }
 
 

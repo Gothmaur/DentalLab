@@ -18,5 +18,7 @@ public interface IUsuarioService {
 	public Usuarios findByEmailAndClave(String email, String clave);
 	//Intento de consulta por token
 	public Usuarios findByToken(String token);
+	//Intento de consulta por token
+	public List<Usuarios> findAllByTipo(String tipo);
 
 }

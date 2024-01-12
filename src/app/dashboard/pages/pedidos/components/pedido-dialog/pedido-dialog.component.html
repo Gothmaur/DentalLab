@@ -9,8 +9,10 @@
         <div class="col-6 field">
             <mat-form-field appearance = "outline" >
                 <mat-label>Dr. Solicitante</mat-label>
-                <mat-select formControlName="dr_solicitante" matInput type = "text" name = "dr_solicitante">
-                  <mat-option *ngFor="let doctor of doctores" [value]="doctor">{{ doctor }}</mat-option>
+                <mat-select formControlName="dr_solicitante" matInput type="text" name="dr_solicitante">
+                <mat-option *ngFor="let doctor of doctores" [value]="doctor.nombre + ' ' + doctor.apellido1">
+                    {{ doctor.nombre + ' ' + doctor.apellido1 }}
+                </mat-option>
                 </mat-select>
                 <mat-error *ngIf = "DrSolicitanteControl.hasError('required')">
                     Este campo es requerido

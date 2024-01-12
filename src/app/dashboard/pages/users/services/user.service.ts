@@ -44,6 +44,19 @@ export class UserService {
     );
   }
 
+  getUsersByType(tipo: string): Observable<User[]> {
+    this.httpClient.get<User[]>(environment.springApiURL + '/users/tipo/'+tipo).subscribe({//Se consultan los datos de la DB usando http
+      next:(response)=> {
+        this.usuarios$.next(response);
+      },
+      error: () =>{
+        //Si hay algún error, mostrar "Error al conectar".
+        this.notify.showError("Error al conectar con el servidor") 
+      }
+    })
+    return this.usuarios$.asObservable();
+  }
+
   //Crear usuario en la vista
   createUser(usuario:UserCreation): void{
     const token = generateRandomString(20); 

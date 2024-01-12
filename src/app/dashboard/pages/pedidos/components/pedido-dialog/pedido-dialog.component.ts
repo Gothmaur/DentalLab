@@ -2,6 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Pedidos } from '../../Models/pedidos';
+import { UserService } from '../../../users/services/user.service';
+import { User } from '../../../users/models/Users';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-pedido-dialog',
@@ -71,12 +74,22 @@ export class PedidoDialogComponent {
     observaciones: this.ObservacionesControl
   });
 
-  doctores: string[] = ['Dr. Smith', 'Dr. Johnson', 'Dr. Martinez']; // Obtendrías estos datos de tu servicio
+  doctores!: User[] | undefined; // Obtendrías estos datos de tu servici
+  doctoresF: User[] | undefined = []; // Obtendrías estos datos de tu servicio
   colores: string[] = ['','A1','A2','A3','A4','B1','B2','B3','B4','C1','C2','C3','C4','D1','D2','D3','D4'];
 
 constructor(private dialogRef: MatDialogRef<PedidoDialogComponent>,
+  userService:UserService,
   @Inject(MAT_DIALOG_DATA) private data?:Pedidos,
   ){
+    userService.loadUsers();
+    userService.getUsersByType("Cliente").subscribe({
+      next: (response) => {this.doctores = response;
+      }
+    });
+    console.log(this.doctores);
+    //this.doctores = this.doctores?.filter((user: User) => user.tipo === 'Cliente') ?? [];
+    console.log(this.doctoresF);
     if(this.data){
       this.editingPedido = data;
 
