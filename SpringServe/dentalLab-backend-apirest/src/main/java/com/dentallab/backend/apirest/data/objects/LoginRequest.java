@@ -1,4 +1,4 @@
-package com.dentallab.backend.apirest.models.entity;
+package com.dentallab.backend.apirest.data.objects;
 
 public class LoginRequest {
     private String email;

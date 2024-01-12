@@ -24,7 +24,6 @@ export class UserDetailComponent {
         if(id!=null){
           this.userId = +id;
           this.loadUser();
-          console.log(this.user);
       }
       }
     });

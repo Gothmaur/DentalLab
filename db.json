@@ -101,6 +101,17 @@
       "precio": "10",
       "cantidad_disponible": "1200",
       "id": 2
+    },
+    {
+      "material": "Yeso",
+      "fecha_ingreso": "2024-01-11T06:00:00.000Z",
+      "fecha_caducidad": "2024-02-15T06:00:00.000Z",
+      "proveedor": "Deposito Dental: Madero",
+      "descripcion": "test",
+      "unidad_medida": "Piezas",
+      "precio": 12,
+      "cantidad_disponible": 70,
+      "id": 3
     }
   ],
   "pedidos": [
