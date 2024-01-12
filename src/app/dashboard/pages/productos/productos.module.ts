@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProductosComponent } from './productos.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { productosRoutingModule } from './productos-routing.module';
+import { ProductIndexComponent } from './pages/product-index/product-index.component';
 
 
 
@@ -18,7 +19,8 @@ import { productosRoutingModule } from './productos-routing.module';
     ProductosComponent,
     ProductDialogComponent,
     ProductTableComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductIndexComponent
   ],
   imports: [
     RouterModule,

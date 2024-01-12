@@ -1,1 +1,32 @@
-<p>product-details works!</p>
+<!-- product-detail.component.html (o el nombre de tu archivo HTML) -->
+
+<div *ngIf="producto">
+    <h2>Detalles del Producto</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <td>{{ producto.id }}</td>
+      </tr>
+      <tr>
+        <th>Nombre</th>
+        <td>{{ producto.nombre }}</td>
+      </tr>
+      <tr>
+        <th>Descripción</th>
+        <td>{{ producto.descripcion }}</td>
+      </tr>
+      <tr>
+        <th>Tipo</th>
+        <td>{{ producto.tipo }}</td>
+      </tr>
+      <tr>
+        <th>Precio</th>
+        <td>{{ producto.precio }}</td>
+      </tr>
+      <tr>
+        <th>Cotizar</th>
+        <td>{{ producto.cotizar ? 'Sí' : 'No' }}</td>
+      </tr>
+    </table>
+  </div>
+  

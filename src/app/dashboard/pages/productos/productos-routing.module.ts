@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductosComponent } from './productos.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ProductIndexComponent } from './pages/product-index/product-index.component';
 
 @NgModule({
   imports: [RouterModule.forChild([
     {
       //dashboard/productos
-      path:'productos', 
-      component: ProductosComponent
+      path:'', 
+      component: ProductIndexComponent
     },
     {
       //dashboard/productos/:id
