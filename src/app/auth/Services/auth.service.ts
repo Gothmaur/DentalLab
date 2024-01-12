@@ -23,40 +23,42 @@ export class AuthService {
 
   isAuthenticated(): Observable<boolean>{
     //return this.authUsers$.pipe(take(1),map( (user)=> !!user ));
-    return this.httpClient.get<User[]>(environment.baseApiURL + '/users',{
+    //Usando JSON-server : environment.baseApiURL + '/users'
+    //Usando el servicio spring : : environment.springApiURL + '/authenticated'
+    return this.httpClient.get<User>(environment.springApiURL + '/authenticated',{
       params:{
+        //Con Json-server
         token: localStorage.getItem('token') || '',
+        //Con spring
+        //tbl_usuarios_token: localStorage.getItem('token') || '',
       }
     }).pipe(
       map((usersResult) =>{
-        if(usersResult.length){
-          const authUser = usersResult[0];
+        if(usersResult){
+          const authUser = usersResult;
           this.store.dispatch(AuthActions.setAuthUser({payload:authUser}));
         }
-
-        return !!usersResult.length;
+        return !!usersResult;
       })
     )
   }
 
   login(payload:LoginPayload):void{
-    
-    this.httpClient.get<User[]>(environment.baseApiURL + '/users',{
-      params:{
+    //Usando JSON-server : environment.baseApiURL+ '/users'
+    //Usando el servicio spring : : environment.springApiURL + '/login'
+    this.httpClient.post<User>(environment.springApiURL + '/login',{
         email: payload.email || '',
         clave: payload.password || ''
-      }
     }).subscribe({//Se consultan los datos de la DB usando http
-      next:(response)=> {
-        if(response.length){
-          const authUser = response[0];
+      next:(authUser)=> {
+        if(authUser){
+          console.log(authUser);
           //Respuesta en obserbable
           //this._authUsers$.next(response[0]);
           //Respuesta en store
           this.store.dispatch(AuthActions.setAuthUser({payload : authUser}));
-          localStorage.setItem('token',authUser.token);
+          console.log("Asigno token "+ authUser.token);
           this.router.navigate(['/dashboard/home']);
-          
         }else{
           this.notify.showError('E-mail o contraseña no validos');
           this.store.dispatch(AuthActions.setAuthUser({payload : null}));
@@ -71,6 +73,7 @@ export class AuthService {
     })
   
   }
+  
 
   logOut():void{
     this.store.dispatch(AuthActions.setAuthUser({payload : null}));

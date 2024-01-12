@@ -1,4 +1,4 @@
-package com.dentallab.backend.apirest.model.entity;
+package com.dentallab.backend.apirest.models.entity;
 
 import java.io.Serializable;
 
@@ -18,23 +18,23 @@ public class Usuarios implements Serializable{
 	@Column(name="tbl_usuarios_id")
 	private int id;
 	
-	@Column(name="tbl_usuarios_nombre")
+	@Column(name="tbl_usuarios_nombre", nullable=false)
 	private String nombre;
-	@Column(name="tbl_usuarios_primerApellido")
+	@Column(name="tbl_usuarios_primerApellido", nullable=false)
 	private String apellido1;
 	@Column(name="tbl_usuarios_segundoApellido")
 	private String apellido2;
-	@Column(name="tbl_usuarios_telefono")
+	@Column(name="tbl_usuarios_telefono", nullable=false)
 	private String telefono;
-	@Column(name="tbl_usuarios_direccion")
+	@Column(name="tbl_usuarios_direccion", nullable=false)
 	private String direccion;
-	@Column(name="tbl_usuarios_email")
+	@Column(name="tbl_usuarios_email", nullable=false, unique = true)
 	private String email;
-	@Column(name="tbl_usuarios_pass")
+	@Column(name="tbl_usuarios_pass", nullable=false)
 	private String clave;
-	@Column(name="tbl_usuarios_token")
+	@Column(name="tbl_usuarios_token", nullable=false, unique = true)
 	private String token;
-	@Column(name="tbl_usuarios_tipo")
+	@Column(name="tbl_usuarios_tipo", nullable=false)
 	private String tipo;
 	
 	//Getters & Setters

@@ -18,7 +18,9 @@ export class UserService {
   
   //cargar usuarios
   loadUsers(): void{
-    this.httpClient.get<User[]>(environment.baseApiURL + '/users').subscribe({//Se consultan los datos de la DB usando http
+    //Usando JSON-server : environment.baseApiURL/users
+    //Usando el servicio spring : : environment.springApiURL
+    this.httpClient.get<User[]>(environment.springApiURL + '/users').subscribe({//Se consultan los datos de la DB usando http
       next:(response)=> {
         this.usuarios$.next(response);
       },
@@ -45,7 +47,9 @@ export class UserService {
   //Crear usuario en la vista
   createUser(usuario:UserCreation): void{
     const token = generateRandomString(20); 
-    this.httpClient.post<User>(environment.baseApiURL + '/users',{...usuario, token }).pipe( //
+    //Usando JSON-server : environment.baseApiURL/users
+    //Usando el servicio spring : : environment.springApiURL
+    this.httpClient.post<User>(environment.springApiURL + '/users',{...usuario, token }).pipe( //
       mergeMap((usuarioNuevo) => this.usuarios$.pipe(
         take(1),
         map((arrayActual)=>[...arrayActual, usuarioNuevo])
@@ -66,7 +70,9 @@ export class UserService {
     // Fusionar las propiedades actualizadas y mantener el token
     const usuarioActualizado = { ...originalUser, ...usuario };
 
-    this.httpClient.put(environment.baseApiURL + '/users/'+id, usuarioActualizado).subscribe({
+    //Usando JSON-server : environment.baseApiURL/users
+    //Usando el servicio spring : : environment.springApiURL
+    this.httpClient.put(environment.springApiURL + '/users/'+id, usuarioActualizado).subscribe({
       next: () => {
         this.loadUsers();
         this.notify.showSuccess("Actualización exitosa");
@@ -78,7 +84,9 @@ export class UserService {
 
   //Eliminar Usuario
   deleteUserById(id: number): void{
-    this.httpClient.delete<User>(environment.baseApiURL + '/users/'+id) //Eliminar usuario de la lista
+    //Usando JSON-server : environment.baseApiURL/users
+    //Usando el servicio spring : : environment.springApiURL
+    this.httpClient.delete<User>(environment.springApiURL + '/users/'+id) //Eliminar usuario de la lista
     .pipe( mergeMap( (/* NecesitoVariable? */) => this.usuarios$.pipe(
       take(1),
       map( (arrayActual) => arrayActual.filter( (u) => u.id !== id) )//Filtrar lista sin el usuario eliminado
