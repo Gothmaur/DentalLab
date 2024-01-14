@@ -64,7 +64,7 @@ export class ProductIndexComponent {
   }
 //Eliminar Producto 
   onDeleteProduct(productToDelete:Products):void{
-    if(confirm(`¿Está seguro de eliminar el producto? {{userToDelete.nombre}}`)){
+    if(confirm(`¿Está seguro de eliminar el producto?`)){
       this.productServices.deleteProductById(productToDelete.id);
     }
   }

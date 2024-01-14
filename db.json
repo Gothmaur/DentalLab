@@ -160,6 +160,27 @@
       "abono": "100",
       "observaciones": "Prueba",
       "id": 2
+    },
+    {
+      "dr_solicitante": "Iris Salinas",
+      "paciente_tratamiento": "Protesis Molar",
+      "fecha_recepcion": "2024-01-12T06:00:00.000Z",
+      "fecha_entrega": "2024-01-19T06:00:00.000Z",
+      "tipo_protesis": "Fija",
+      "tipo_prueba": "Rodillo",
+      "color_incisal_oclusal": "",
+      "color_medio": "",
+      "color_Cervical": "",
+      "modelo": true,
+      "impresion": false,
+      "antagonista": true,
+      "mordida": true,
+      "colorimetro": false,
+      "cucharillas": false,
+      "precio_total": "1000",
+      "abono": 450,
+      "observaciones": null,
+      "id": 3
     }
   ]
 }

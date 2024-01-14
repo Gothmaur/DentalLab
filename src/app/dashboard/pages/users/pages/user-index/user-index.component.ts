@@ -64,12 +64,13 @@ export class UserIndexComponent {
   }
 //Eliminar Usuario
   onDeleteUser(userToDelete:User):void{
-    if(confirm(`¿Está seguro de eliminar este usuario? {{userToDelete.nombre}}`)){
+    if(confirm(`¿Está seguro de eliminar este usuario?`)){
       this.userServices.deleteUserById(userToDelete.id);
     }
   }
 //Editar Usuario
   onEditUser(userToEdit:User):void{
+    console.log(userToEdit);
     this.matDialog.open(UserDialogComponent,{
       data: userToEdit
     })

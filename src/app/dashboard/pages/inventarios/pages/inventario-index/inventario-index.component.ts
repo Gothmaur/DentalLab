@@ -67,7 +67,7 @@ export class InventarioIndexComponent {
   }
 //Eliminar Inventario 
   onDeleteInventario(inventarioToDelete:Inventarios):void{
-    if(confirm(`¿Está seguro de eliminar el inventario? {{userToDelete.nombre}}`)){
+    if(confirm(`¿Está seguro de eliminar el inventario?`)){
       this.inventarioServices.deleteInventarioById(inventarioToDelete.id);
     }
   }

@@ -77,7 +77,7 @@ export class PedidoIndexComponent {
   }
 //Eliminar Pedido 
   onDeletePedido(pedidoToDelete:Pedidos):void{
-    if(confirm(`¿Está seguro de eliminar el pedido? {{userToDelete.nombre}}`)){
+    if(confirm(`¿Está seguro de eliminar el pedido?`)){
       this.pedidoServices.deletePedidoById(pedidoToDelete.id);
     }
   }
