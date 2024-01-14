@@ -12,11 +12,10 @@ import { Observable, map } from 'rxjs';
 })
 export class UserIndexComponent {
   
-  public users: Observable<User[]>;
+  public users!: Observable<User[]>;
   
   constructor(private matDialog: MatDialog, 
     private userServices:UserService){
-      console.log(UserService);
       this.users = this.userServices.getUsers().pipe(
         //tap((valor) => console.log('Valor', valor)),
         map((valor) => valor.map((usuario) => (
@@ -28,10 +27,13 @@ export class UserIndexComponent {
           }))),
         //tap((valor) => console.log('Valor nuevo', valor)),
       );
-      this.userServices.loadUsers();
       //this.notifyServices.showSuccess("Se cargó correctamente");
     }
 
+    ngOnInit(): void {
+      this.userServices.loadUsers();
+      this.users = this.userServices.getUsers();
+    }
 
 //Crear usuario
   onCreateUser():void{
@@ -70,7 +72,6 @@ export class UserIndexComponent {
   }
 //Editar Usuario
   onEditUser(userToEdit:User):void{
-    console.log(userToEdit);
     this.matDialog.open(UserDialogComponent,{
       data: userToEdit
     })

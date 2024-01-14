@@ -5,6 +5,8 @@ import { ProductosComponent } from "./pages/productos/productos.component";
 import { UsersComponent } from "./pages/users/users.component";
 import { PedidosComponent } from "./pages/pedidos/pedidos.component";
 import { InventariosComponent } from "./pages/inventarios/inventarios.component";
+import { adminGuard } from "../core/guards/admin.guard";
+import { UserDetailComponent } from "./pages/users/pages/user-detail/user-detail.component";
 
 @NgModule({
     imports:[
@@ -13,8 +15,13 @@ import { InventariosComponent } from "./pages/inventarios/inventarios.component"
                 path:'home', component: HomeComponent
               },
               {
+                path:"perfil",
+                component:UserDetailComponent,
+              },
+              {
                 //dashboard/users
                 path:'users', 
+                canActivate:[adminGuard],
                 component: UsersComponent,
                 loadChildren: () => import('./pages/users/users.module').then( (m) => m.UsersModule),
               },
@@ -31,8 +38,9 @@ import { InventariosComponent } from "./pages/inventarios/inventarios.component"
                 loadChildren: () => import('./pages/pedidos/pedidos.module').then( (m) => m.PedidosModule),
               },
               {
-                //dashboard/
+                //dashboard/inventarios
                 path:'inventarios',
+                canActivate: [adminGuard],
                 component: InventariosComponent,
                 loadChildren: () => import('./pages/inventarios/inventarios.module').then( (m) => m.InventariosModule),
               },

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User, UserCreation, UserUpdating } from '../models/Users';
-import { BehaviorSubject, Observable, Subject, delay, filter, map, mergeMap, of, take } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, delay, filter, map, mergeMap, of, take } from 'rxjs';
 import { NotifyService } from 'src/app/core/services/notify.service';
 import { HttpClient } from '@angular/common/http';
 import { generateRandomString } from 'src/app/Shared/Utils/helpers';
@@ -38,9 +38,14 @@ export class UserService {
  
   //Obtener usuarios por ID
   getUsersById(id: Number):Observable < User | undefined >{
-    return this.usuarios$.pipe(
-      map( ( users ) => users.find( ( u ) => u.id === id) ),
-      take(1)
+    return this.httpClient.get<User>(environment.springApiURL + '/users/id/' + id)
+    .pipe(
+      catchError(() => {
+        // Manejar el error aquí si es necesario
+        console.error("Error al conectar con el servidor");
+        return of(undefined); // Devolver un observable vacío o con un valor por defecto
+      }),
+      map(user => user) // No es necesario utilizar find si la respuesta es un objeto User
     );
   }
 

@@ -45,6 +45,13 @@ goToPedidos() {
     });
   }
 
+  
+  goToPerfil():void{
+    this.router.navigate(['dashboard','perfil'],{
+      //relativeTo: this.activatedRoute,
+    });
+  }
+
 }
 
 

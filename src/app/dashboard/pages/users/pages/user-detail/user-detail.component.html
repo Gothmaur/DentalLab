@@ -48,6 +48,11 @@
           
 </div>
 
+<!-- Mostrar el botón "Modificar" solo si la variable perfil es true -->
+<button mat-icon-button color="primary" *ngIf="perfil" (click) = "onEditProfile()">
+  <mat-icon>edit</mat-icon>
+</button>
+
 <button mat-icon-button routerLink="..">
     <mat-icon>arrow_back</mat-icon>
 </button>
