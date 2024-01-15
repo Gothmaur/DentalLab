@@ -79,7 +79,7 @@
         </div>
 
          <!--Combo donde se despliegan los tipos de protesis-->
-         <div class="col-6 field">
+         <div class="col-6 field" *ngIf="rol === 'Administrador' && editingUser?.tipo !== 'Administrador'">
             <mat-form-field appearance = "outline" >
                 <mat-label>Tipo de Usuario</mat-label>
                 <mat-select formControlName="tipo"  matInput type = "text" name = "tipo" required>

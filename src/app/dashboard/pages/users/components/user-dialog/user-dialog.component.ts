@@ -2,6 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { User } from '../../models/Users';
+import { Store } from '@ngrx/store';
+import { selectAuthRole } from 'src/app/store/auth/auth.selector';
 
 
 
@@ -14,6 +16,7 @@ import { User } from '../../models/Users';
 export class UserDialogComponent {
 
   editingUser?: User;
+  rol:string | undefined;
   
   //Validaciones requeridas para cada uno de los campos 
   NombreControl = new FormControl<string | null>(null,[
@@ -61,6 +64,7 @@ export class UserDialogComponent {
 
 
 constructor(private dialogRef: MatDialogRef<UserDialogComponent>,
+  private store:Store,
   @Inject(MAT_DIALOG_DATA) private data?:User,
   ){
     if(this.data){
@@ -74,6 +78,7 @@ constructor(private dialogRef: MatDialogRef<UserDialogComponent>,
       this.ClaveControl.setValue(this.data.clave);
       this.TipoControl.setValue(this.data.tipo);
     }
+    store.select(selectAuthRole).subscribe((userRole) => this.rol = userRole);
   }
 
 
