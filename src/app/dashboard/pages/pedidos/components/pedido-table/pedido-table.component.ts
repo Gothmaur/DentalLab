@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Pedidos } from '../../Models/pedidos';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
+import { selectAuthRole, selectIsAdministrador, selectIsEmpleado } from 'src/app/store/auth/auth.selector';
 
 @Component({
   selector: 'app-pedido-table',
@@ -10,6 +12,8 @@ import { MatTableDataSource } from '@angular/material/table';
 export class PedidoTableComponent {
   displayedColumns: string[] = ['cliente', 'producto', 'pendiente', 'fecha_entrega','acciones'];
   dataSourceMatTable!: MatTableDataSource<Pedidos>;
+  protected isAdmin:boolean = false;
+  protected isEmpleado:boolean = false;
 
 
   @Input()
@@ -18,6 +22,12 @@ export class PedidoTableComponent {
   deletePedido = new EventEmitter<Pedidos>();
   @Output()
   editPedido = new EventEmitter<Pedidos>();
+
+  constructor(private store:Store){
+    this.store.select(selectIsAdministrador).subscribe( (isadmin) => 
+      this.isAdmin = isadmin
+    )
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['dataSource'] && changes['dataSource'].currentValue) {

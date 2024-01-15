@@ -12,7 +12,7 @@
       ></app-pedido-table>
     </div>
   
-    <button mat-flat-button color="primary" type="button" (click)="onCreatePedido()">
+    <button *ngIf="!isCliente" mat-flat-button color="primary" type="button" (click)="onCreatePedido()">
       <mat-icon>add</mat-icon>
       Agregar Pedido
     </button>

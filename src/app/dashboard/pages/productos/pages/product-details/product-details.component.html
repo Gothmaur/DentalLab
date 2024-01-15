@@ -13,11 +13,11 @@
       </tr>
       <tr>
         <th>Tipo</th>
-        <td>{{ producto.tipo }}</td>
+        <td>{{ producto.tipo.nombre }}</td>
       </tr>
       <tr>
         <th>Precio</th>
-        <td>{{ producto.precio }}</td>
+        <td>{{ (producto.precio * 1.16) | currency }}</td>
       </tr>
       <tr>
         <th>Cotizar</th>

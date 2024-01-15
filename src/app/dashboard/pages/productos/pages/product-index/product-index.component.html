@@ -12,7 +12,7 @@
       ></app-product-table>
     </div>
   
-    <button mat-flat-button color="primary" type="button" (click)="onCreateProduct()">
+    <button *ngIf="!isCliente" mat-flat-button color="primary" type="button" (click)="onCreateProduct()">
       <mat-icon>add</mat-icon>
       Agregar Producto
     </button>

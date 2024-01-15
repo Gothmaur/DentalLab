@@ -4,6 +4,8 @@ import { Pedidos } from '../../Models/pedidos';
 import { MatDialog } from '@angular/material/dialog';
 import { PedidoService } from '../../Services/pedidos-service.service';
 import { PedidoDialogComponent } from '../../components/pedido-dialog/pedido-dialog.component';
+import { Store } from '@ngrx/store';
+import { selectAuthUser, selectIsCliente } from 'src/app/store/auth/auth.selector';
 
 @Component({
   selector: 'app-pedido-index',
@@ -13,12 +15,17 @@ import { PedidoDialogComponent } from '../../components/pedido-dialog/pedido-dia
 export class PedidoIndexComponent {
   public pedidos: Observable<Pedidos[]>; 
   
+  protected isCliente:boolean = false;
+  nombre: string | undefined;
+  
   constructor(private matDialog: MatDialog, 
     private pedidoServices:PedidoService,
-    //private notifyServices:NotifyService
+    private store:Store
     ){
-      this.pedidos = this.pedidoServices.getPedidos().pipe(
-        //tap((valor) => console.log('Valor', valor)),
+      this.store.select(selectIsCliente).subscribe( (isClient) => 
+        this.isCliente = isClient
+      )
+      if(!this.isCliente) this.pedidos = this.pedidoServices.getPedidos().pipe(
         map((valor) => valor.map((pedido) => (
           {
             ...pedido, 
@@ -28,10 +35,27 @@ export class PedidoIndexComponent {
             abono: pedido.abono,
             fecha_entrega: pedido.fecha_entrega
           }))),
-        //tap((valor) => console.log('Valor nuevo', valor)),
       );
+      else{
+        this.store.select(selectAuthUser).subscribe( (user) => 
+          this.nombre = user?.nombre + ' ' + user?.apellido1
+        )
+        this.pedidos = this.pedidoServices.getPedidosByDr(this.nombre).pipe(
+          map((valor) => valor.map((pedido) => (
+            {
+              ...pedido, 
+              dr_solicitante: pedido.dr_solicitante,
+              paciente_tratamiento: pedido.paciente_tratamiento, 
+              precio_total: pedido.precio_total,
+              abono: pedido.abono,
+              fecha_entrega: pedido.fecha_entrega
+            }))),
+        );
+      }
       this.pedidoServices.loadPedidos();
-      //this.notifyServices.showSuccess("Se cargó correctamente");
+
+      
+
     }
 
     

@@ -29,10 +29,24 @@ export class PedidoService {
   }
 
   //Obtener pedidos
+  getPedidosByDr(drSolicitante:string | undefined): Observable<Pedidos[]>{
+    return this.pedidos$.pipe(
+      map((pedidos: Pedidos[]) => {
+        if (!drSolicitante) {
+          // Si el parámetro es undefined, retornar todos los pedidos
+          return pedidos;
+        }
+        // Filtrar por el parámetro drSolicitante
+        return pedidos.filter(pedido => pedido.dr_solicitante === drSolicitante);
+      })
+    );
+  }
+ 
+  //Obtener pedidos
   getPedidos(): Observable<Pedidos[]>{
     return this.pedidos$.asObservable();
   }
- 
+
   //Obtener pedidos por ID
   getPedidosById(id: Number):Observable < Pedidos | undefined >{
     return this.pedidos$.pipe(

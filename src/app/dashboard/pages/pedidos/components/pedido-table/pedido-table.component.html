@@ -33,11 +33,11 @@
           <mat-icon>visibility</mat-icon>
         </button>
 
-        <button mat-icon-button color="warn" (click)="deletePedido.emit(element)">
+        <button *ngIf="isAdmin" mat-icon-button color="warn" (click)="deletePedido.emit(element)">
           <mat-icon>delete</mat-icon>
         </button>
         
-        <button mat-icon-button color="primary" (click)="editPedido.emit(element)">
+        <button *ngIf="isAdmin" mat-icon-button color="primary" (click)="editPedido.emit(element)">
           <mat-icon>edit</mat-icon>
         </button>
         

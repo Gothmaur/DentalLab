@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Inventarios } from '../../Models/inventarios';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
+import { selectIsAdministrador } from 'src/app/store/auth/auth.selector';
 
 @Component({
   selector: 'app-inventario-table',
@@ -10,13 +12,20 @@ import { MatTableDataSource } from '@angular/material/table';
 export class InventarioTableComponent {
   displayedColumns: string[] = ['material', 'unidad_medida', 'cantidad','fecha_caducidad','acciones'];
   dataSourceMatTable!: MatTableDataSource<Inventarios>;
- 
+  protected isAdmin!: boolean;
+
   @Input()
   dataSource: Inventarios[] = [];
   @Output()
   deleteProduct = new EventEmitter<Inventarios>();
   @Output()
   editProduct = new EventEmitter<Inventarios>();
+  
+  constructor(private store:Store){
+    this.store.select(selectIsAdministrador).subscribe( (isadmin) => 
+      this.isAdmin = isadmin
+    )
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['dataSource'] && changes['dataSource'].currentValue) {

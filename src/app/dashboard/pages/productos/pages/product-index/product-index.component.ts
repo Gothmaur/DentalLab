@@ -4,6 +4,8 @@ import { Products } from '../../Models/productos';
 import { ProductService } from '../../Services/product-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectIsCliente } from 'src/app/store/auth/auth.selector';
 
 @Component({
   selector: 'app-product-index',
@@ -14,11 +16,16 @@ export class ProductIndexComponent {
 
 
   public products: Observable<Products[]>; 
+  protected isCliente!: boolean;
   
   constructor(private matDialog: MatDialog, 
     private productServices:ProductService,
+    private store:Store
     //private notifyServices:NotifyService
     ){
+      this.store.select(selectIsCliente).subscribe( (isClient) => 
+        this.isCliente = isClient
+      )
       this.products = this.productServices.getProducts().pipe(
         //tap((valor) => console.log('Valor', valor)),
         map((valor) => valor.map((producto) => (
