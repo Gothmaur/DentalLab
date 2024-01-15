@@ -1,4 +1,9 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput (input)="applyFilter($event)" />
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSourceMatTable" class="mat-elevation-z8">
   
     <ng-container matColumnDef="Nombre Completo">
       <th mat-header-cell *matHeaderCellDef appResaltado> Nombre Completo </th>
@@ -18,7 +23,7 @@
           <mat-icon>visibility</mat-icon>
         </button>
 
-        <button mat-icon-button color="warn" (click)="deleteUser.emit(element.id)">
+        <button mat-icon-button color="warn" (click)="deleteUser.emit(element)">
           <mat-icon>delete</mat-icon>
         </button>
         

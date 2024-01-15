@@ -1,4 +1,9 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput (input)="applyFilter($event)" />
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSourceMatTable" class="mat-elevation-z8">
   
     <ng-container matColumnDef="material">
       <th mat-header-cell *matHeaderCellDef appResaltado> Material </th>
