@@ -7,6 +7,8 @@ import { PedidosComponent } from "./pages/pedidos/pedidos.component";
 import { InventariosComponent } from "./pages/inventarios/inventarios.component";
 import { adminGuard } from "../core/guards/admin.guard";
 import { UserDetailComponent } from "./pages/users/pages/user-detail/user-detail.component";
+import { clienteGuard } from "../core/guards/cliente.guard";
+import { empleadoGuard } from "../core/guards/empleado.guard";
 
 @NgModule({
     imports:[
@@ -28,6 +30,7 @@ import { UserDetailComponent } from "./pages/users/pages/user-detail/user-detail
               {
                 //dashboard/productoss
                 path:'products',
+                canActivate:[empleadoGuard],
                 component: ProductosComponent,
                 loadChildren: () => import('./pages/productos/productos.module').then( (m) => m.ProductosModule),
               },
@@ -40,7 +43,7 @@ import { UserDetailComponent } from "./pages/users/pages/user-detail/user-detail
               {
                 //dashboard/inventarios
                 path:'inventarios',
-                canActivate: [adminGuard],
+                canActivate: [clienteGuard],
                 component: InventariosComponent,
                 loadChildren: () => import('./pages/inventarios/inventarios.module').then( (m) => m.InventariosModule),
               },

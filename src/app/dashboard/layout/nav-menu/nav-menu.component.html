@@ -1,24 +1,24 @@
 <mat-nav-list>
 
-    <!--/dashboard -> /dashboard/home-->
-    <a (click)="goTo('home')" mat-list-item>Inicio</a>
+  <!-- Inicio (Visible para todos)-->
+  <a (click)="goTo('home')" mat-list-item>Inicio</a>
 
-    <!--/dashboard -> /dashboard/perfil-->
-    <a (click)="goTo('perfil')" mat-list-item>Perfil</a>
-    
-    <!--/dashboard -> /dashboard/users-->
-    <a (click)="goTo('users')" mat-list-item>Usuarios</a>
+  <!-- Perfil (Visible para todos)-->
+  <a (click)="goTo('perfil')" mat-list-item>Perfil</a>
+  
+  <!-- Usuarios (Visible solo para Administradores) -->
+  <a *ngIf="rol === 'Administrador'" (click)="goTo('users')" mat-list-item>Usuarios</a>
 
-    <!--/dashboard -> /dashboard/pedidos-->
-    <a (click)="goTo('pedidos')" mat-list-item >Pedidos</a>
+  <!-- Pedidos (Visible para todos) -->
+  <a (click)="goTo('pedidos')" mat-list-item>Pedidos</a>
 
-    <!--/dashboard -> /dashboard/inventarios-->
-    <a (click)="goTo('inventarios')" mat-list-item >Inventarios</a>
+  <!-- Inventarios (No visible para Clientes) -->
+  <a *ngIf="rol !== 'Cliente'" (click)="goTo('inventarios')" mat-list-item>Inventarios</a>
 
-    <!--/dashboard -> /dashboard/products-->
-    <a (click)="goTo('products')" mat-list-item >Productos</a>
+  <!-- Productos (No visible para Empleados) -->
+  <a *ngIf="rol !== 'Empleado'" (click)="goTo('products')" mat-list-item>Productos</a>
 
-    <!--/dashboard -> /auth-->
-    <a mat-list-item  (click)="LogOut()">Cerrar Sesión</a>
+  <!-- Cerrar Sesión -->
+  <a mat-list-item  (click)="LogOut()">Cerrar Sesión</a>
 
-  </mat-nav-list>
+</mat-nav-list>

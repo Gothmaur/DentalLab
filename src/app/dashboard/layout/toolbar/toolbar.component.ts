@@ -25,12 +25,8 @@ export class ToolbarComponent {
 
   ngOnInit(): void {
     this.authUserSubscription = this.authUser$.subscribe((user) => {
-      // Actualizar el nombre del usuario en la vista cuando cambie la información del usuario autenticado
-      // Asegúrate de tener un campo "nombre" en tu modelo User
-      this.zone.run(() => {
-        this.nombreUsuario = user?.nombre || 'Invitado';
-      });
-    });
+     this.nombreUsuario = user?.nombre;
+     });
   }
 
   ngOnDestroy(): void {
