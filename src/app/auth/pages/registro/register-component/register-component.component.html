@@ -1,1 +1,110 @@
-<p>register-component works!</p>
+<h1 mat-dialog-title> Registrarse </h1>
+<div mat-dialog-content>
+    <form [formGroup] = "usersForm" class="grid">
+        <!-- Campo para el nombre -->
+        <div class="field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Nombre</mat-label>
+                <input formControlName ="nombre" matInput type="text" name = "nombre">
+                <mat-error *ngIf = "NombreControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "NombreControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <!-- Campo para el primer apellido -->
+        <div class="field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Primer apellido</mat-label>
+                <input formControlName ="apellido1" matInput type = "text" name = "apellido1">
+                <mat-error *ngIf = "PrimerApellidoControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "PrimerApellidoControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <!-- Campo para el segundo apellido -->
+        <div class="field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Segundo apellido</mat-label>
+                <input formControlName ="apellido2" matInput type = "text" name = "apellido2">
+                <mat-error *ngIf = "SegundoApellidoControl.hasError('minlength')"> Debe contar con al menos 2 caracteres</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- Campo para el telefono -->
+        <div class="field">
+            <mat-form-field appearance = "outline">
+                <mat-label>telefono</mat-label>
+                <input formControlName ="telefono" matInput type = "text" name = "telefono">
+                <mat-error *ngIf = "TelefonoControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "TelefonoControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Campo para la direccion -->
+        <div class="field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Direccion</mat-label>
+                <input formControlName ="direccion" matInput type = "text" name = "direccion">
+                <mat-error *ngIf = "DireccionControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf = "DireccionControl.hasError('minlength')"> 
+                    Debe contar con al menos 2 caracteres
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="field">
+            <mat-form-field appearance = "outline">
+                <mat-label>e-mail</mat-label>
+                <input formControlName ="email" matInput type = "text" name = "email">
+                <mat-error *ngIf = "EmailControl.hasError('required')"> Este campo es requerido</mat-error>
+                <mat-error *ngIf = "EmailControl.hasError('email')"> 
+                    Debe cumplir con el formato nombre@dominio.com
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+         <!--Combo donde se despliegan los tipos de protesis-->
+         <div class="col-6 field" *ngIf="!TipoControl.value">
+            <mat-form-field appearance = "outline" >
+                <mat-label>Tipo de Usuario</mat-label>
+                <mat-select formControlName="tipo"  matInput type = "text" name = "tipo" required>
+                  <mat-option value="Empleado">Empleado</mat-option>
+                  <mat-option value="Cliente">Cliente</mat-option>
+                </mat-select>
+                <mat-error *ngIf = "TipoControl.hasError('required')">
+                    Este campo es requerido
+                </mat-error>
+              </mat-form-field>
+        </div>
+
+        <div class="field">
+            <mat-form-field appearance = "outline">
+                <mat-label>Contraseña</mat-label>
+                <input formControlName ="clave" matInput type = "password" name = "clave">
+                <mat-error *ngIf = "ClaveControl.hasError('required')"> Por favor ingrese una contraseña</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="flex justify-content-end">
+            <button mat-button mat-dialog-close> Cancelar </button>
+            <button mat-button type="submit" (click) = "onSubmint()"> Guardar </button>
+        </div> 
+
+    </form>
+    <!--Tabla de contenidos-->
+
+    <pre>
+        <!--{{ usersForm.value | json}} -->
+    </pre>
+</div>
