@@ -4,10 +4,6 @@
     <h2>Detalles del Pedido</h2>
     <table>
       <tr>
-        <th>ID</th>
-        <td>{{ pedido.id }}</td>
-      </tr>
-      <tr>
         <th>Doctor Solicitante</th>
         <td>{{ pedido.dr_solicitante }}</td>
       </tr>
@@ -69,7 +65,7 @@
       </tr>
       <tr>
         <th>Precio Total</th>
-        <td>{{ pedido.precio_total | currency }}</td>
+        <td>{{ (pedido.precio_total * 1.16)  | currency }}</td>
       </tr>
       <tr>
         <th>Abono</th>
@@ -77,7 +73,7 @@
       </tr>
       <tr>
         <th>Restante</th>
-        <td>{{ (pedido.precio_total - pedido.abono ) | currency }}</td>
+        <td>{{ ((pedido.precio_total * 1.16) - pedido.abono ) | currency }}</td>
       </tr>
 
       <tr>
