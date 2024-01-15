@@ -1,20 +1,22 @@
 <mat-nav-list>
 
     <!--/dashboard -> /dashboard/home-->
+    <a (click)="goTo('home')" mat-list-item>Inicio</a>
 
-    <a (click)="goToHome()" mat-list-item>Inicio</a>
-
-    <a (click)="goToPerfil()" mat-list-item>Perfil</a>
+    <!--/dashboard -> /dashboard/perfil-->
+    <a (click)="goTo('perfil')" mat-list-item>Perfil</a>
     
     <!--/dashboard -> /dashboard/users-->
-    <a (click)="goToUsers()" mat-list-item>Usuarios</a>
+    <a (click)="goTo('users')" mat-list-item>Usuarios</a>
+
+    <!--/dashboard -> /dashboard/pedidos-->
+    <a (click)="goTo('pedidos')" mat-list-item >Pedidos</a>
+
+    <!--/dashboard -> /dashboard/inventarios-->
+    <a (click)="goTo('inventarios')" mat-list-item >Inventarios</a>
 
     <!--/dashboard -> /dashboard/products-->
-    <a (click)="goToPedidos()" mat-list-item >Pedidos</a>
-
-    <a (click)="goToInventarios()" mat-list-item >Inventarios</a>
-
-    <a (click)="goToProducts()" mat-list-item >Productos</a>
+    <a (click)="goTo('products')" mat-list-item >Productos</a>
 
     <!--/dashboard -> /auth-->
     <a mat-list-item  (click)="LogOut()">Cerrar Sesión</a>
